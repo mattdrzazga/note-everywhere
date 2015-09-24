@@ -2,7 +2,8 @@ TEMPLATE = app
 
 QT += qml quick
 
-SOURCES += src/c++/main.cpp
+SOURCES += src/c++/main.cpp \
+    src/c++/note.cpp
 
 RESOURCES += qml.qrc
 
@@ -12,3 +13,5 @@ QML_IMPORT_PATH =
 # Default rules for deployment.
 include(deployment.pri)
 
+HEADERS += \
+    src/c++/note.h

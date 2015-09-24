@@ -4,5 +4,6 @@
     </qresource>
     <qresource prefix="/desktop">
         <file>src/qml/desktop/DesktopScreen.qml</file>
+        <file>src/qml/desktop/NoteListView.qml</file>
     </qresource>
 </RCC>
