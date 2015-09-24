@@ -8,6 +8,7 @@ class PathResolver : public QObject
     Q_OBJECT
 public:
     explicit PathResolver(QObject *parent = 0);
+    Q_INVOKABLE QString iconPath(const QString &iconName);
 
 signals:
 

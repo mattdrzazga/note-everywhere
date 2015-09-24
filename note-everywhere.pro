@@ -1,12 +1,13 @@
 TEMPLATE = app
 
-QT += qml quick
+QT += qml quick widgets
 
 SOURCES += src/c++/main.cpp \
     src/c++/note.cpp \
-    src/qml/desktop/pathresolver.cpp
+    src/c++/pathresolver.cpp
 
-RESOURCES += qml.qrc
+RESOURCES += qml.qrc \
+    images.qrc
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
@@ -16,4 +17,4 @@ include(deployment.pri)
 
 HEADERS += \
     src/c++/note.h \
-    src/qml/desktop/pathresolver.h
+    src/c++/pathresolver.h

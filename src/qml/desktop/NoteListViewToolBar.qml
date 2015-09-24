@@ -7,18 +7,24 @@ ToolBar {
     RowLayout {
         anchors.fill: parent
         ToolButton {
+            id: createNewNoteButton
             iconName: "document-new"
-            iconSource: "file:/usr/share/icons/breeze/actions/toolbar/document-new.svg"
+//            iconSource: PathResolver.iconPath("document-new");
+            tooltip: "Create new note"
         }
         ToolButton {
-            iconName: "document-new"
-            iconSource: "file:/usr/share/icons/breeze/actions/toolbar/view-refresh.svg"
+            iconName: "view-refresh"
+            iconSource: PathResolver.iconPath("view-refresh");
+            tooltip: "Refresh"
         }
         ToolButton {
-            iconName: "document-new"
-            iconSource: "file:/home/matt/Development/GUI/qt/note-everywhere/images/flag-grey.svg"
+            tooltip: "Select category"
+            iconSource: "qrc:/linux/images/linux/flag-grey.svg"
+            onClicked: iconSource = "file:/home/matt/Development/GUI/qt/note-everywhere/images/linux/flag-red.svg"
         }
 
-        SearchThemedTextField {Layout.alignment: Qt.AlignRight; Layout.fillWidth: true; Layout.maximumWidth: 400 }
+        Item { Layout.fillWidth: true }
+
+        SearchThemedTextField { Layout.alignment: Qt.AlignRight; Layout.fillWidth: true; Layout.maximumWidth: 400 }
     }
 }

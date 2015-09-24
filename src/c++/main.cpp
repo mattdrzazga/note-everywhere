@@ -1,11 +1,16 @@
-#include <QGuiApplication>
+#include <QApplication>
 #include <QQmlApplicationEngine>
+#include <QtQml>
+#include <QQmlContext>
+#include "pathresolver.h"
 
 int main(int argc, char *argv[])
 {
-    QGuiApplication app(argc, argv);
+    QApplication app(argc, argv);
+    PathResolver pathResolver;
 
     QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("PathResolver", &pathResolver);
     engine.load(QUrl(QStringLiteral("qrc:/src/qml/main.qml")));
 
     return app.exec();
