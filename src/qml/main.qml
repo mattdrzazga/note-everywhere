@@ -1,6 +1,6 @@
 import QtQuick 2.5
 import QtQuick.Controls 1.4
-import "qrc:/desktop/src/qml/desktop" as Desktop
+import "qrc:/desktop/src/qml/desktop"
 
 ApplicationWindow {
     visible: true
@@ -9,10 +9,9 @@ ApplicationWindow {
     title: qsTr("Note Everywhere")
 
 
-
     Loader {
         anchors.fill: parent
-        sourceComponent: Desktop.DesktopScreen {}
+        sourceComponent: DesktopScreen {}
     }
 
 }

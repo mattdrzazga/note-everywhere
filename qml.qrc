@@ -5,5 +5,7 @@
     <qresource prefix="/desktop">
         <file>src/qml/desktop/DesktopScreen.qml</file>
         <file>src/qml/desktop/NoteListView.qml</file>
+        <file>src/qml/desktop/SearchThemedTextField.qml</file>
+        <file>src/qml/desktop/NoteListViewToolBar.qml</file>
     </qresource>
 </RCC>

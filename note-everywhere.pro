@@ -3,7 +3,8 @@ TEMPLATE = app
 QT += qml quick
 
 SOURCES += src/c++/main.cpp \
-    src/c++/note.cpp
+    src/c++/note.cpp \
+    src/qml/desktop/pathresolver.cpp
 
 RESOURCES += qml.qrc
 
@@ -14,4 +15,5 @@ QML_IMPORT_PATH =
 include(deployment.pri)
 
 HEADERS += \
-    src/c++/note.h
+    src/c++/note.h \
+    src/qml/desktop/pathresolver.h
