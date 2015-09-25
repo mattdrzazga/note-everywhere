@@ -14,6 +14,6 @@ Rectangle {
         anchors.top: toolbar.bottom
         anchors.bottom: parent.bottom
         width: parent.width
+        model: NoteEverywhere.model
     }
-
 }

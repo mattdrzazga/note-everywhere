@@ -3,7 +3,7 @@
 #include <QScreen>
 #include <QDebug>
 
-NoteEverywhere::NoteEverywhere(QObject *parent) : QObject(parent)
+NoteEverywhere::NoteEverywhere(QObject *parent) : QObject(parent), m_model(0)
 {
     m_isMobile = false;
 #if defined(Q_OS_ANDROID) || defined(Q_OS_IOS) || defined(Q_OS_BLACKBERRY)
