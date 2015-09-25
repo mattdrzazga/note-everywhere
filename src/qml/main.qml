@@ -13,6 +13,5 @@ ApplicationWindow {
         anchors.fill: parent
         sourceComponent: DesktopScreen {}
     }
-
 }
 

@@ -6,7 +6,6 @@ import NoteEverywhere 1.0
 
 ToolBar {
     id: toolBar
-    signal categoryChanged(int category)
 
     RowLayout {
         anchors.fill: parent
@@ -22,55 +21,43 @@ ToolBar {
             tooltip: "Refresh"
         }
         ToolButton {
-            id: categoryButton
-
-            function onTriggeredSlot(category) {
-                categoryButton.iconSource = PathResolver.categoryIcon(category)
-                toolBar.categoryChanged(category)
-            }
-
             tooltip: "Select category"
-            iconSource: "qrc:/linux/images/linux/flag-grey.svg"
+            iconSource: PathResolver.categoryIcon(NoteEverywhere.category)
             menu: Menu {
                 MenuItem {
-                    id: workCategory
                     text: "Work"
                     iconSource: PathResolver.categoryIcon(Ne.WORK)
-                    onTriggered: categoryButton.onTriggeredSlot(Ne.WORK)
+                    onTriggered: NoteEverywhere.category = Ne.WORK
                 }
 
                 MenuItem {
-                    id: entertainmentCategory
                     text: "Entertainment"
                     iconSource: PathResolver.categoryIcon(Ne.ENTERTAINMENT)
-                    onTriggered: categoryButton.onTriggeredSlot(Ne.ENTERTAINMENT)
+                    onTriggered: NoteEverywhere.category = Ne.ENTERTAINMENT
                 }
 
                 MenuItem {
-                    id: hobbyCategory
                     text: "Hobby"
                     iconSource: PathResolver.categoryIcon(Ne.HOBBY)
-                    onTriggered: categoryButton.onTriggeredSlot(Ne.HOBBY)
+                    onTriggered: NoteEverywhere.category = Ne.HOBBY
                 }
 
                 MenuItem {
-                    id: homeCategory
                     text: "Home"
                     iconSource: PathResolver.categoryIcon(Ne.HOME)
-                    onTriggered: categoryButton.onTriggeredSlot(Ne.HOME)
+                    onTriggered: NoteEverywhere.category = Ne.HOME
                 }
 
                 MenuItem {
-                    id: noneCategory
                     text: "None"
                     iconSource: PathResolver.categoryIcon(Ne.NONE)
-                    onTriggered: categoryButton.onTriggeredSlot(Ne.NONE)
+                    onTriggered: NoteEverywhere.category = Ne.NONE
                 }
             }
         }
 
         Item { Layout.fillWidth: true }
 
-        SearchThemedTextField { Layout.alignment: Qt.AlignRight; Layout.fillWidth: true; Layout.maximumWidth: 400 }
+        SearchThemedTextField { Layout.alignment: Qt.AlignRight; Layout.fillWidth: true; Layout.maximumWidth: 400 * NoteEverywhere.ratio }
     }
 }
