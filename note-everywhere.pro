@@ -4,7 +4,9 @@ QT += qml quick widgets
 
 SOURCES += src/c++/main.cpp \
     src/c++/note.cpp \
-    src/c++/pathresolver.cpp
+    src/c++/pathresolver.cpp \
+    src/c++/noteeverywhere.cpp \
+    src/c++/notevalues.cpp
 
 RESOURCES += qml.qrc \
     images.qrc
@@ -17,4 +19,6 @@ include(deployment.pri)
 
 HEADERS += \
     src/c++/note.h \
-    src/c++/pathresolver.h
+    src/c++/pathresolver.h \
+    src/c++/noteeverywhere.h \
+    src/c++/notevalues.h
