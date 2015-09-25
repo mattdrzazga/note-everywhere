@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QDateTime>
+#include "notevalues.h"
 
 class Note : public QObject
 {
@@ -10,7 +11,7 @@ class Note : public QObject
     Q_PROPERTY(int id READ id WRITE setId NOTIFY idChanged)
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
     Q_PROPERTY(QString content READ content WRITE setContent NOTIFY contentChanged)
-    Q_PROPERTY(QString color READ color WRITE setColor NOTIFY colorChanged)
+    Q_PROPERTY(NoteValues::Category category READ category WRITE setCategory NOTIFY categoryChanged)
     Q_PROPERTY(QDateTime lastModificationDateTime READ lastModificationDateTime WRITE setLastModificationDateTime NOTIFY lastModificationDateTimeChanged)
 
 public:
@@ -22,28 +23,28 @@ public:
     inline int id() const { return m_id; }
     inline QString name() const { return m_name; }
     inline QString content() const { return m_content; }
-    inline QString color() const { return m_color; }
+    inline NoteValues::Category category() const { return m_category; }
     inline QDateTime lastModificationDateTime() const { return m_lastModificationDateTime; }
 
 signals:
     void idChanged(int id);
     void nameChanged(const QString &name);
     void contentChanged(const QString &content);
-    void colorChanged(const QString &color);
+    void categoryChanged(const NoteValues::Category &category);
     void lastModificationDateTimeChanged(const QDateTime &dateTime);
 
 public slots:
     void setId(int id);
     void setName(const QString &name);
     void setContent(const QString &content);
-    void setColor(const QString &color);
+    void setCategory(const NoteValues::Category &category);
     void setLastModificationDateTime(const QDateTime &dateTime);
 
 private:
     int m_id;
     QString m_name;
     QString m_content;
-    QString m_color;
+    NoteValues::Category m_category;
     QDateTime m_lastModificationDateTime;
 };
 

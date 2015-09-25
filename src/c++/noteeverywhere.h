@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include "notevalues.h"
+#include "notemodel.h"
 
 class NoteEverywhere : public QObject
 {
@@ -27,7 +28,6 @@ private:
     qreal m_ratio;
     bool m_isMobile;
     NoteValues::Category m_category;
-
 };
 
 #endif // NOTEEVERYWHERE_H

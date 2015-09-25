@@ -3,12 +3,14 @@
 
 Note::Note(QObject *parent) : QObject(parent)
 {
+
 }
 
 Note::Note(const QString &name, const QString &content):
     m_name(name),
     m_content(content)
 {
+
 }
 
 Note::Note(const Note &note):
@@ -17,11 +19,12 @@ Note::Note(const Note &note):
     m_id = note.m_id;
     m_name = note.m_name;
     m_content = note.m_content;
-    m_color = note.m_color;
+    m_category = note.m_category;
 }
 
 Note::~Note()
 {
+
 }
 
 void Note::setName(const QString &name)
@@ -48,11 +51,11 @@ void Note::setId(int id)
     }
 }
 
-void Note::setColor(const QString &color)
+void Note::setCategory(const NoteValues::Category &category)
 {
-    if (m_color != color){
-        m_color = color;
-        emit colorChanged(m_color);
+    if (m_category != category){
+        m_category = category;
+        emit categoryChanged(m_category);
     }
 }
 
