@@ -3,9 +3,9 @@ import QtQuick.Layouts 1.2
 import QtQuick.Controls 1.4
 import NoteEverywhere 1.0
 
-Item {
+Rectangle {
     width: parent.width
-    height: 60 * NoteEverywhere.ratio
+    height: 50 * NoteEverywhere.ratio
 
     RowLayout {
         anchors.fill: parent
@@ -14,6 +14,7 @@ Item {
 
         Label {
             Layout.preferredWidth: 50 * NoteEverywhere.ratio
+            Layout.alignment: Qt.AlignVCenter
             text: model.name
         }
 
@@ -21,7 +22,6 @@ Item {
             id: toolButton
 
             function onTriggeredSlot(category) {
-                console.log("changing category of " + model.name)
                 if (model.category !== category){
                     NoteEverywhere.model.setCategoryAt(model.index, category)
                     NoteEverywhere.sqlInterface.updateNoteCategory(model.id, category)
@@ -62,5 +62,15 @@ Item {
                 }
             }
         }
+    }
+
+    Rectangle {
+        height: 1
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.leftMargin: 10 * NoteEverywhere.ratio
+        anchors.rightMargin: 10 * NoteEverywhere.ratio
+        color: "#133a0f"
     }
 }
