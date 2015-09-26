@@ -4,6 +4,7 @@
 #include <QObject>
 #include "notevalues.h"
 #include "notemodel.h"
+#include "sqlnoteinterface.h"
 
 class NoteEverywhere : public QObject
 {
@@ -32,6 +33,7 @@ private:
     bool m_isMobile;
     NoteValues::Category m_category;
     NoteModel *m_model;
+    SqlNoteInterface sqlInterface;
 };
 
 #endif // NOTEEVERYWHERE_H

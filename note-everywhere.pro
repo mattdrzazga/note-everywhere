@@ -1,13 +1,14 @@
 TEMPLATE = app
 
-QT += qml quick widgets
+QT += qml quick widgets sql
 
 SOURCES += src/c++/main.cpp \
     src/c++/note.cpp \
     src/c++/pathresolver.cpp \
     src/c++/noteeverywhere.cpp \
     src/c++/notevalues.cpp \
-    src/c++/notemodel.cpp
+    src/c++/notemodel.cpp \
+    src/c++/sqlnoteinterface.cpp
 
 RESOURCES += qml.qrc \
     images.qrc
@@ -23,4 +24,5 @@ HEADERS += \
     src/c++/pathresolver.h \
     src/c++/noteeverywhere.h \
     src/c++/notevalues.h \
-    src/c++/notemodel.h
+    src/c++/notemodel.h \
+    src/c++/sqlnoteinterface.h
