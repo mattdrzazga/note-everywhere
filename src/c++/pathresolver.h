@@ -13,9 +13,14 @@ public:
     Q_INVOKABLE QString categoryIcon(int category) const;
 
     Q_INVOKABLE inline static QString appLocalDataLocation() {
-        return QStandardPaths::standardLocations(QStandardPaths::AppLocalDataLocation).value(0);
+        QString path = QStandardPaths::standardLocations(QStandardPaths::AppLocalDataLocation).value(0);
+        QDir dir(path);
+        if (!dir.exists())
+            dir.mkpath(path);
+        if (!path.isEmpty() && !path.endsWith("/"))
+            path += "/";
+        return path;
     }
-
 
 signals:
 

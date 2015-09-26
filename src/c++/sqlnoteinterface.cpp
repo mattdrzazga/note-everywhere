@@ -2,19 +2,21 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QDebug>
+#include "pathresolver.h"
 
 SqlNoteInterface::SqlNoteInterface(QObject *parent):
     QObject(parent)
 {
-    QSqlDatabase db=QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("memory");
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    QString dbPath = PathResolver::appLocalDataLocation() + "notes";
+    db.setDatabaseName(dbPath);
     if (!db.open()){
         qFatal("Cannot open db");
         return;
     }
 
     QSqlQuery query;
-    query.exec("create table if not exists Notes(id INTEGER PRIMARY KEY AUTOINCREMENT, name Text, content Text, category TINYINT, lastModificationDateTime DATETIME )");
+    query.exec("create table if not exists Note(id INTEGER PRIMARY KEY AUTOINCREMENT, name Text, content Text, category TINYINT, lastModificationDateTime DATETIME )");
     populateModel();
 }
 
@@ -24,7 +26,7 @@ SqlNoteInterface::~SqlNoteInterface()
 
 NoteModel* SqlNoteInterface::populateModel() const
 {
-    QSqlQuery query("SELECT * FROM Notes");
+    QSqlQuery query("SELECT * FROM Note");
     if (!query.exec())
         qFatal("Query failed");
 
@@ -48,7 +50,7 @@ int SqlNoteInterface::addNote(const QString &name,
                               const QDateTime &lastModificationDateTime) const
 {
     QSqlQuery query;
-    query.prepare("insert into Notes(name, content, category, lastModificationDateTime) values (:name, :content, :category, :lastModificationDateTime)");
+    query.prepare("insert into Note(name, content, category, lastModificationDateTime) values (:name, :content, :category, :lastModificationDateTime)");
     query.bindValue(":name", name);
     query.bindValue(":content", content);
     query.bindValue(":category", category);
