@@ -16,12 +16,12 @@ public:
     Q_INVOKABLE NoteModel* populateModel() const;
     Q_INVOKABLE int addNote(const QString &name,
                             const QString &content,
-                            const NoteValues::Category &category = NoteValues::NONE,
+                            int category,
                             const QDateTime &lastModificationDateTime = QDateTime::currentDateTime()) const;
     Q_INVOKABLE bool updateNote(int id, const QString &name, const QString &content) const;
     Q_INVOKABLE bool updateNoteContent(int id, const QString &content) const;
     Q_INVOKABLE bool updateNoteName(int id, const QString &name) const;
-    Q_INVOKABLE bool updateNoteCategory(int id, const NoteValues::Category &category) const;
+    Q_INVOKABLE bool updateNoteCategory(int id, int category) const;
     Q_INVOKABLE bool updateNoteLastModificationDateTime(int id, const QDateTime &dateTime) const;
     Q_INVOKABLE bool deleteNote(int id) const;
     //    Q_INVOKABLE void searchForStringAndColor(const QString &text, const QString &color)const;

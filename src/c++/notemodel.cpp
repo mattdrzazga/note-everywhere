@@ -12,13 +12,13 @@ NoteModel::~NoteModel()
 
 }
 
-void NoteModel::addNote(int id, const QString &name, const QString &content, const NoteValues::Category &category, const QDateTime &dateTime)
+void NoteModel::addNote(int id, const QString &name, const QString &content, int category, const QDateTime &dateTime)
 {
     Note *note = new Note(this);
     note->setId(id);
     note->setName(name);
     note->setContent(content);
-    note->setCategory(category);
+    note->setCategory(NoteValues::Category(category));
     note->setLastModificationDateTime(dateTime);
     addNote(note);
 }
@@ -74,10 +74,10 @@ void NoteModel::setContentAt(int index, const QString &content)
     }
 }
 
-void NoteModel::setCategoryAt(int index, const NoteValues::Category &category)
+void NoteModel::setCategoryAt(int index, int category)
 {
     if (index >= 0 && index < m_notes.count()){
-        m_notes[index]->setCategory(category);
+        m_notes[index]->setCategory(NoteValues::Category(category));
         dataChanged(this->index(index), this->index(index));
     }
 }

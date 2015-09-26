@@ -12,13 +12,21 @@ NoteEverywhere::NoteEverywhere(QObject *parent) : QObject(parent), m_model(0)
 
     QRect rect = qApp->primaryScreen()->geometry();
     m_ratio = m_isMobile ? qMin(qMax(rect.width(), rect.height())/1136. , qMin(rect.width(), rect.height())/640.) : 1;
-    m_category = NoteValues::NONE;
+    m_currentCategory = NoteValues::NONE;
+
+    m_sqlInterface = new SqlNoteInterface(this);
 }
 
-void NoteEverywhere::setCategory(const NoteValues::Category &category)
+void NoteEverywhere::setCurrentCategory(const NoteValues::Category &category)
 {
-    if (m_category != category){
-        m_category = category;
-        emit categoryChanged(m_category);
+    if (m_currentCategory != category){
+        m_currentCategory = category;
+        emit currentCategoryChanged(m_currentCategory);
     }
+}
+
+void NoteEverywhere::populateModel()
+{
+    m_model = m_sqlInterface->populateModel();
+    emit modelChanged();
 }

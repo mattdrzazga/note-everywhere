@@ -46,7 +46,7 @@ NoteModel* SqlNoteInterface::populateModel() const
 
 int SqlNoteInterface::addNote(const QString &name,
                               const QString &content,
-                              const NoteValues::Category &category,
+                              int category,
                               const QDateTime &lastModificationDateTime) const
 {
     QSqlQuery query;
@@ -83,7 +83,7 @@ bool SqlNoteInterface::updateNoteName(int id, const QString &name) const
     return query.exec();
 }
 
-bool SqlNoteInterface::updateNoteCategory(int id, const NoteValues::Category &category) const
+bool SqlNoteInterface::updateNoteCategory(int id, int category) const
 {
     QSqlQuery query;
     query.prepare("update Note set category = :category where id = :id");

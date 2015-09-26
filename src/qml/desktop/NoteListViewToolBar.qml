@@ -6,6 +6,7 @@ import NoteEverywhere 1.0
 
 ToolBar {
     id: toolBar
+    property alias createNewNoteButton: createNewNoteButton
 
     RowLayout {
         anchors.fill: parent
@@ -19,39 +20,40 @@ ToolBar {
             iconName: "view-refresh"
             iconSource: PathResolver.iconPath("view-refresh");
             tooltip: "Refresh"
+            onClicked: console.log(NoteEverywhere.model.size)
         }
         ToolButton {
             tooltip: "Select category"
-            iconSource: PathResolver.categoryIcon(NoteEverywhere.category)
+            iconSource: PathResolver.categoryIcon(NoteEverywhere.currentCategory)
             menu: Menu {
                 MenuItem {
                     text: "Work"
                     iconSource: PathResolver.categoryIcon(Ne.WORK)
-                    onTriggered: NoteEverywhere.category = Ne.WORK
+                    onTriggered: NoteEverywhere.currentCategory = Ne.WORK
                 }
 
                 MenuItem {
                     text: "Entertainment"
                     iconSource: PathResolver.categoryIcon(Ne.ENTERTAINMENT)
-                    onTriggered: NoteEverywhere.category = Ne.ENTERTAINMENT
+                    onTriggered: NoteEverywhere.currentCategory = Ne.ENTERTAINMENT
                 }
 
                 MenuItem {
                     text: "Hobby"
                     iconSource: PathResolver.categoryIcon(Ne.HOBBY)
-                    onTriggered: NoteEverywhere.category = Ne.HOBBY
+                    onTriggered: NoteEverywhere.currentCategory = Ne.HOBBY
                 }
 
                 MenuItem {
                     text: "Home"
                     iconSource: PathResolver.categoryIcon(Ne.HOME)
-                    onTriggered: NoteEverywhere.category = Ne.HOME
+                    onTriggered: NoteEverywhere.currentCategory = Ne.HOME
                 }
 
                 MenuItem {
                     text: "None"
                     iconSource: PathResolver.categoryIcon(Ne.NONE)
-                    onTriggered: NoteEverywhere.category = Ne.NONE
+                    onTriggered: NoteEverywhere.currentCategory = Ne.NONE
                 }
             }
         }

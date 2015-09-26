@@ -24,7 +24,7 @@ public:
     };
 
     void addNote(Note *note);
-    Q_INVOKABLE void addNote(int id, const QString &name, const QString &content, const NoteValues::Category &category, const QDateTime &dateTime);
+    Q_INVOKABLE void addNote(int id, const QString &name, const QString &content, int category, const QDateTime &dateTime = QDateTime::currentDateTime());
     Q_INVOKABLE void removeNote(int index);
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
@@ -35,7 +35,7 @@ public:
     Q_INVOKABLE void setIdAt(int index, int id);
     Q_INVOKABLE void setNameAt(int index, const QString &name);
     Q_INVOKABLE void setContentAt(int index, const QString &content);
-    Q_INVOKABLE void setCategoryAt(int index, const NoteValues::Category &category);
+    Q_INVOKABLE void setCategoryAt(int index, int category);
     Q_INVOKABLE void setLastModificationDateTimeAt(int index, const QDateTime &dateTime);
 
 signals:
