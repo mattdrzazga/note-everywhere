@@ -10,7 +10,7 @@ SqlNoteInterface::SqlNoteInterface(QObject *parent):
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
     QString dbPath = PathResolver::appLocalDataLocation() + "notes";
     db.setDatabaseName(dbPath);
-    if (!db.open()){
+    if (!db.open()) {
         qFatal("Cannot open db");
         return;
     }
@@ -27,21 +27,7 @@ SqlNoteInterface::~SqlNoteInterface()
 NoteModel* SqlNoteInterface::populateModel() const
 {
     QSqlQuery query("SELECT * FROM Note");
-    if (!query.exec())
-        qFatal("Query failed");
-
-    NoteModel *noteModel = new NoteModel();
-
-    while (query.next()){
-        Note *note = new Note();
-        note->setId(query.value("id").toInt());
-        note->setName(query.value("name").toString());
-        note->setContent(query.value("content").toString());
-        note->setCategory(NoteValues::Category(query.value("category").toInt()));
-        noteModel->addNote(note);
-    }
-
-    return noteModel;
+    return modelForQuery(query);
 }
 
 int SqlNoteInterface::addNote(const QString &name,
@@ -122,74 +108,50 @@ bool SqlNoteInterface::deleteNote(int id) const
 
     return query.exec();
 }
-/*
-void SqlNoteInterface::searchForStringAndColor(const QString &text, const QString &color) const
+
+NoteModel *SqlNoteInterface::notesFor(const QString &text, int category) const
 {
-    if (!noteModel)
-        return;
-
     QSqlQuery query;
-    query.prepare("SELECT * FROM Note Where (name LIKE '%"+text+"%' or content LIKE '%"+text+"%') "+"AND color='"+color+"'");
 
+    if (text.isEmpty()) {
+        if (category == NoteValues::NONE) {
+            return populateModel();
+        }
+        else {
+            query.prepare("SELECT * FROM note WHERE category = :category");
+            query.bindValue(":category", category);
+            return modelForQuery(query);
+        }
+    }
+    else {
+        if (category == NoteValues::NONE) {
+            query.prepare("SELECT * FROM Note WHERE (name LIKE '%"+text+"%' or content LIKE '%"+text+"%')");
+            return modelForQuery(query);
+        }
+        else {
+            query.prepare("SELECT * FROM Note WHERE (name LIKE '%"+text+"%' OR content LIKE '%"+text+"%') "+"AND category = ':category'");
+            query.bindValue(":category", category);
+            return modelForQuery(query);
+        }
+    }
+}
+
+NoteModel *SqlNoteInterface::modelForQuery(QSqlQuery &query) const
+{
     if (!query.exec())
         qFatal("Query failed");
 
-    noteModel->clearModel();
+    NoteModel *noteModel = new NoteModel();
 
-    while (query.next()){
+    while (query.next()) {
         Note *note = new Note();
         note->setId(query.value("id").toInt());
         note->setName(query.value("name").toString());
         note->setContent(query.value("content").toString());
-//        note->setCategory(query.value("category").toInt());
+        note->setCategory(NoteValues::Category(query.value("category").toInt()));
+        note->setLastModificationDateTime(query.value("lastModificationDateTime").toDateTime());
         noteModel->addNote(note);
     }
+
+    return noteModel;
 }
-
-void SqlNoteInterface::searchForString(const QString &text) const
-{
-    if (!noteModel)
-        return;
-
-    QSqlQuery query;
-    query.prepare("SELECT * FROM Note WHERE content LIKE '%"+text+"%' or name LIKE '%"+text+"%'");
-
-    if (!query.exec())
-        qFatal("Query failed");
-
-    noteModel->clearModel();
-
-    while (query.next()){
-        Note *note = new Note();
-        note->setId(query.value("id").toInt());
-        note->setName(query.value("name").toString());
-        note->setContent(query.value("content").toString());
-//        note->setCategory(query.value("category").toInt());
-        noteModel->addNote(note);
-    }
-}
-
-void SqlNoteInterface::searchForColor(const QString &color) const
-{
-    if (!noteModel)
-        return;
-
-    QSqlQuery query;
-    query.prepare("SELECT * FROM Note WHERE color=:color");
-    query.bindValue(":color", color);
-
-    if (!query.exec())
-        qFatal("Query failed");
-
-    noteModel->clearModel();
-
-    while (query.next()){
-        Note *note = new Note();
-        note->setId(query.value("id").toInt());
-        note->setName(query.value("name").toString());
-        note->setContent(query.value("content").toString());
-//        note->setCategory(query.value("category").toInt());
-        noteModel->addNote(note);
-    }
-}
-*/

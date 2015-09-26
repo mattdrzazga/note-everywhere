@@ -5,7 +5,7 @@ Item {
 
 
     NoteListView {
-        width: parent.width * 0.4
+        width: parent.width * 0.3
         height: parent.height
     }
 

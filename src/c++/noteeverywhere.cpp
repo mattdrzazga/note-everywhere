@@ -30,3 +30,9 @@ void NoteEverywhere::populateModel()
     m_model = m_sqlInterface->populateModel();
     emit modelChanged();
 }
+
+void NoteEverywhere::notesFor(const QString &text)
+{
+    m_model = m_sqlInterface->notesFor(text, m_currentCategory);
+    emit modelChanged();
+}

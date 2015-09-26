@@ -12,6 +12,7 @@ ApplicationWindow {
     Loader {
         anchors.fill: parent
         sourceComponent: DesktopScreen {}
+        focus: true
     }
 }
 

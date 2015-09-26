@@ -16,6 +16,7 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("PathResolver", &pathResolver);
     engine.rootContext()->setContextProperty("NoteEverywhere", &noteEverywhere);
+    qmlRegisterType<Note>();
     engine.load(QUrl(QStringLiteral("qrc:/src/qml/main.qml")));
 
     return app.exec();

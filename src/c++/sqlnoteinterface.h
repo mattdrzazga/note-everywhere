@@ -24,9 +24,9 @@ public:
     Q_INVOKABLE bool updateNoteCategory(int id, int category) const;
     Q_INVOKABLE bool updateNoteLastModificationDateTime(int id, const QDateTime &dateTime) const;
     Q_INVOKABLE bool deleteNote(int id) const;
-    //    Q_INVOKABLE void searchForStringAndColor(const QString &text, const QString &color)const;
-    //    Q_INVOKABLE void searchForString(const QString &text)const;
-    //    Q_INVOKABLE void searchForColor(const QString &color)const;
+    Q_INVOKABLE NoteModel* notesFor(const QString &text, int category) const;
+
+    NoteModel* modelForQuery(QSqlQuery &query) const;
 };
 
 #endif // SQLNOTEMODEL_H

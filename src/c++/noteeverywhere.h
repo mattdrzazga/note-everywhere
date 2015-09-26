@@ -25,6 +25,7 @@ public:
     void setCurrentCategory(const NoteValues::Category &category);
 
     Q_INVOKABLE void populateModel();
+    Q_INVOKABLE void notesFor(const QString &text);
 
 signals:
     void currentCategoryChanged(NoteValues::Category);

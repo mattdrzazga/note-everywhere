@@ -3,19 +3,44 @@ import QtQuick.Layouts 1.2
 import QtQuick.Controls 1.4
 import NoteEverywhere 1.0
 
-Rectangle {
+Item {
+    id: root
     width: parent.width
     height: 50 * NoteEverywhere.ratio
+
+    property alias mouseArea: mouseArea
+
+    Rectangle {
+        anchors.fill: parent
+        color: root.ListView.isCurrentItem? "#45a4af" : "white"
+        opacity: 0.5
+        Behavior on color { ColorAnimation { duration: 50 } }
+    }
+
+    MouseArea {
+        id: mouseArea
+        anchors.fill: parent
+    }
 
     RowLayout {
         anchors.fill: parent
         anchors.leftMargin: 10 * NoteEverywhere.ratio
         anchors.rightMargin: 10 * NoteEverywhere.ratio
 
-        Label {
-            Layout.preferredWidth: 50 * NoteEverywhere.ratio
+        ColumnLayout {
             Layout.alignment: Qt.AlignVCenter
-            text: model.name
+
+            Label {
+                Layout.preferredWidth: root.width - 20 * NoteEverywhere.ratio - toolButton.width
+                text: model.name
+                font.pixelSize: 13 * NoteEverywhere.ratio
+            }
+
+            Label {
+                Layout.preferredWidth: root.width - 20 * NoteEverywhere.ratio - toolButton.width
+                text: model.lastModificationDateTime.toLocaleString(Qt.locale(), Locale.ShortFormat)
+                font.pixelSize: 12 * NoteEverywhere.ratio
+            }
         }
 
         ToolButton {
