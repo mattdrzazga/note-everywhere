@@ -10,6 +10,7 @@ Item {
 
     property alias mouseArea: mouseArea
 
+    //  Highlight component
     Rectangle {
         anchors.fill: parent
         color: root.ListView.isCurrentItem? "#45a4af" : "white"
@@ -17,9 +18,11 @@ Item {
         Behavior on color { ColorAnimation { duration: 50 } }
     }
 
+    //  MouseArea that covers entire delegate. It is used to change currentIndex and can handle contextMenu
     MouseArea {
         id: mouseArea
         anchors.fill: parent
+        acceptedButtons: Qt.LeftButton | Qt.RightButton
     }
 
     RowLayout {
@@ -30,19 +33,22 @@ Item {
         ColumnLayout {
             Layout.alignment: Qt.AlignVCenter
 
+            //  Note Name
             Label {
+                id: noteLabel
                 Layout.preferredWidth: root.width - 20 * NoteEverywhere.ratio - toolButton.width
                 text: model.name
                 font.pixelSize: 13 * NoteEverywhere.ratio
             }
 
+            //  Note last modification date and time
             Label {
                 Layout.preferredWidth: root.width - 20 * NoteEverywhere.ratio - toolButton.width
                 text: model.lastModificationDateTime.toLocaleString(Qt.locale(), Locale.ShortFormat)
                 font.pixelSize: 12 * NoteEverywhere.ratio
             }
         }
-
+            // Note category button
         ToolButton {
             id: toolButton
 
@@ -89,6 +95,7 @@ Item {
         }
     }
 
+    // Horizontal separator between next note
     Rectangle {
         height: 1
         anchors.bottom: parent.bottom

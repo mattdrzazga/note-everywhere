@@ -30,6 +30,47 @@ Rectangle {
         }
     }
 
+    Dialog {
+        id: renameNoteDialog
+        title: "Rename note"
+        standardButtons: StandardButton.Ok | StandardButton.Cancel
+        onVisibleChanged: {
+            if (visible){
+                editNoteNameField.forceActiveFocus()
+                editNoteNameField.selectAll()
+            }
+        }
+
+        onAccepted: {
+            var currentNote = NoteEverywhere.model.getNote(listView.currentIndex)
+            NoteEverywhere.sqlInterface.updateNoteName(currentNote.id, editNoteNameField.text)
+            NoteEverywhere.model.setNameAt(currentNote.name, editNoteNameField.text)
+        }
+
+        TextField {
+            id: editNoteNameField
+            text: NoteEverywhere.model.getNote(listView.currentIndex).name
+        }
+    }
+
+    Menu {
+        id: contextMenu
+        MenuItem {
+            text: "Rename"
+            iconName: "document-edit"
+            onTriggered: {
+                renameNoteDialog.open()
+            }
+        }
+        MenuItem {
+            text: "Delete"
+            iconName: "edit-delete"
+            onTriggered: {
+                deleteNoteDialog.onYes() // THIS IS A GENIUS MOVE
+            }
+        }
+    }
+
     ListView {
         id: listView
         anchors.top: toolbar.bottom
@@ -37,7 +78,12 @@ Rectangle {
         width: parent.width
         model: NoteEverywhere.model
         delegate: NoteDelegate {
-            mouseArea.onClicked: listView.currentIndex = model.index
+            mouseArea.onClicked: {
+                listView.currentIndex = model.index
+                if (mouse.button === Qt.RightButton) {
+                    contextMenu.popup()
+                }
+            }
         }
         onCurrentIndexChanged: console.log(currentIndex)
         boundsBehavior: Flickable.DragOverBounds
