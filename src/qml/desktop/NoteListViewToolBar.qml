@@ -22,7 +22,7 @@ ToolBar {
             iconSource: PathResolver.iconPath("view-refresh");
             tooltip: "Refresh"
             text: "&Refresh"
-            onClicked: NoteEverywhere.populateModel()
+            onClicked: NoteEverywhere.notesFor(searchTextField.text)
         }
         ToolButton {
             id: categoryButton

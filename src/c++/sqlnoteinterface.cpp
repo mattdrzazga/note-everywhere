@@ -129,7 +129,7 @@ NoteModel *SqlNoteInterface::notesFor(const QString &text, int category) const
             return modelForQuery(query);
         }
         else {
-            query.prepare("SELECT * FROM Note WHERE (name LIKE '%"+text+"%' OR content LIKE '%"+text+"%') "+"AND category = ':category'");
+            query.prepare("SELECT * FROM Note WHERE (name LIKE '%"+text+"%' OR content LIKE '%"+text+"%') "+"AND category = :category");
             query.bindValue(":category", category);
             return modelForQuery(query);
         }

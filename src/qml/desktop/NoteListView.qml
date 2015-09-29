@@ -35,22 +35,20 @@ Rectangle {
         title: "Rename note"
         standardButtons: StandardButton.Ok | StandardButton.Cancel
         onVisibleChanged: {
-            if (visible){
+            if (visible) {
+                editNoteNameField.text = NoteEverywhere.model.getNote(listView.currentIndex).name
                 editNoteNameField.forceActiveFocus()
                 editNoteNameField.selectAll()
             }
         }
 
         onAccepted: {
-            var currentNote = NoteEverywhere.model.getNote(listView.currentIndex)
-            NoteEverywhere.sqlInterface.updateNoteName(currentNote.id, editNoteNameField.text)
-            NoteEverywhere.model.setNameAt(currentNote.name, editNoteNameField.text)
+            var currentNoteId = NoteEverywhere.model.getNote(listView.currentIndex).id
+            NoteEverywhere.sqlInterface.updateNoteName(currentNoteId, editNoteNameField.text)
+            NoteEverywhere.model.setNameAt(listView.currentIndex, editNoteNameField.text)
         }
 
-        TextField {
-            id: editNoteNameField
-            text: NoteEverywhere.model.getNote(listView.currentIndex).name
-        }
+        TextField { id: editNoteNameField }
     }
 
     Menu {
