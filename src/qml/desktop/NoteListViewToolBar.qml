@@ -28,8 +28,10 @@ ToolBar {
             id: categoryButton
 
             function searchForCategory(category) {
-                NoteEverywhere.currentCategory = category
-                NoteEverywhere.notesFor(searchTextField.text)
+                if (NoteEverywhere.currentCategory !== category) {
+                    NoteEverywhere.currentCategory = category
+                    NoteEverywhere.notesFor(searchTextField.text)
+                }
             }
 
             tooltip: "Select category"

@@ -97,12 +97,10 @@ Item {
 
     // Horizontal separator between next note
     Rectangle {
+        width: parent.width
         height: 1
         anchors.bottom: parent.bottom
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.leftMargin: 10 * NoteEverywhere.ratio
-        anchors.rightMargin: 10 * NoteEverywhere.ratio
         color: "#133a0f"
+        opacity: 0.3
     }
 }
