@@ -13,6 +13,7 @@ class NoteEverywhere : public QObject
     Q_PROPERTY(NoteValues::Category currentCategory READ currentCategory WRITE setCurrentCategory NOTIFY currentCategoryChanged)
     Q_PROPERTY(NoteModel* model READ model NOTIFY modelChanged)
     Q_PROPERTY(SqlNoteInterface* sqlInterface READ sqlInterface CONSTANT)
+    Q_PROPERTY(Note* currentNote READ currentNote WRITE setCurrentNote NOTIFY currentNoteChanged)
 
 public:
     explicit NoteEverywhere(QObject *parent = 0);
@@ -22,7 +23,9 @@ public:
     inline NoteValues::Category currentCategory() const { return m_currentCategory; }
     inline NoteModel* model() const { return m_model; }
     inline SqlNoteInterface* sqlInterface() const { return m_sqlInterface; }
+    inline Note* currentNote() const { return m_currentNote; }
     void setCurrentCategory(const NoteValues::Category &category);
+    void setCurrentNote(Note *currentNote);
 
     Q_INVOKABLE void populateModel();
     Q_INVOKABLE void notesFor(const QString &text);
@@ -30,6 +33,7 @@ public:
 signals:
     void currentCategoryChanged(NoteValues::Category);
     void modelChanged();
+    void currentNoteChanged();
 
 public slots:
 
@@ -39,6 +43,7 @@ private:
     NoteValues::Category m_currentCategory;
     NoteModel *m_model;
     SqlNoteInterface *m_sqlInterface;
+    Note *m_currentNote;
 };
 
 #endif // NOTEEVERYWHERE_H

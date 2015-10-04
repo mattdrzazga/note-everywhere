@@ -24,7 +24,7 @@ Rectangle {
         text: "Do you really want to delete this note?";
         standardButtons: StandardButton.Yes | StandardButton.No
         onYes: {
-            var id = NoteEverywhere.model.getNote(listView.currentIndex).id
+            var id = NoteEverywhere.currentNote.id
             NoteEverywhere.sqlInterface.deleteNote(id)
             NoteEverywhere.model.removeNote(listView.currentIndex)
         }
@@ -36,14 +36,14 @@ Rectangle {
         standardButtons: StandardButton.Ok | StandardButton.Cancel
         onVisibleChanged: {
             if (visible) {
-                editNoteNameField.text = NoteEverywhere.model.getNote(listView.currentIndex).name
+                editNoteNameField.text = NoteEverywhere.currentNote.name
                 editNoteNameField.forceActiveFocus()
                 editNoteNameField.selectAll()
             }
         }
 
         onAccepted: {
-            var currentNoteId = NoteEverywhere.model.getNote(listView.currentIndex).id
+            var currentNoteId = NoteEverywhere.currentNote.id
             NoteEverywhere.sqlInterface.updateNoteName(currentNoteId, editNoteNameField.text)
             NoteEverywhere.model.setNameAt(listView.currentIndex, editNoteNameField.text)
         }
@@ -75,6 +75,10 @@ Rectangle {
         anchors.bottom: parent.bottom
         width: parent.width
         model: NoteEverywhere.model
+        boundsBehavior: Flickable.DragOverBounds
+        focus: true
+        highlightMoveDuration: 100
+
         delegate: NoteDelegate {
             mouseArea.onClicked: {
                 listView.currentIndex = model.index
@@ -83,10 +87,15 @@ Rectangle {
                 }
             }
         }
-        onCurrentIndexChanged: console.log(currentIndex)
-        boundsBehavior: Flickable.DragOverBounds
-        focus: true
-        highlightMoveDuration: 100
+        onCurrentIndexChanged: {
+            NoteEverywhere.currentNote = NoteEverywhere.model.getNote(currentIndex)
+        }
+
+        onModelChanged: {   // TypeError 'Cannot read property 'size' of null' can be ignored, it can also be prevented by checking if model exists. For future consideration.
+            if (NoteEverywhere.model && NoteEverywhere.model.size === 0) {
+                NoteEverywhere.currentNote = null
+            }
+        }
 
         Keys.onPressed: {
             if (event.key === Qt.Key_End){
