@@ -8,5 +8,6 @@
         <file>src/qml/desktop/SearchThemedTextField.qml</file>
         <file>src/qml/desktop/NoteListViewToolBar.qml</file>
         <file>src/qml/desktop/NoteDelegate.qml</file>
+        <file>src/qml/desktop/NoteEditFrame.qml</file>
     </qresource>
 </RCC>
