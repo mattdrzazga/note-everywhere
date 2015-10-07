@@ -9,5 +9,7 @@
         <file>src/qml/desktop/NoteListViewToolBar.qml</file>
         <file>src/qml/desktop/NoteDelegate.qml</file>
         <file>src/qml/desktop/NoteEditFrame.qml</file>
+        <file>src/qml/desktop/NoteEditFrameToolbar.qml</file>
+        <file>src/qml/desktop/TextEditActions.qml</file>
     </qresource>
 </RCC>
