@@ -10,6 +10,8 @@
         <file>src/qml/desktop/NoteDelegate.qml</file>
         <file>src/qml/desktop/NoteEditFrame.qml</file>
         <file>src/qml/desktop/NoteEditFrameToolbar.qml</file>
-        <file>src/qml/desktop/TextEditActions.qml</file>
+    </qresource>
+    <qresource prefix="/core">
+        <file>src/qml/core/TextEditActions.qml</file>
     </qresource>
 </RCC>
