@@ -3,29 +3,33 @@ import QtQuick.Layouts 1.2
 import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
 import NoteEverywhere 1.0
+import "qrc:/core/src/qml/core"
 
 ToolBar {
     id: toolBar
     property alias createNewNoteButton: createNewNoteButton
+    property alias noteListActions: noteListActions
+
+    NoteListActions {
+        id: noteListActions
+    }
 
     RowLayout {
         anchors.fill: parent
+
         ToolButton {
             id: createNewNoteButton
-            iconName: "document-new"
-            iconSource: PathResolver.iconPath("document-new");
-            tooltip: "Create new note"
-            text: "Create &note"
+            action: noteListActions.createNewNoteAction
         }
+
         ToolButton {
-            iconName: "view-refresh"
-            iconSource: PathResolver.iconPath("view-refresh");
-            tooltip: "Refresh"
-            text: "&Refresh"
+            action: noteListActions.refreshAction
             onClicked: NoteEverywhere.notesFor(searchTextField.text)
         }
+
         ToolButton {
             id: categoryButton
+            action: noteListActions.categoryAction
 
             function searchForCategory(category) {
                 if (NoteEverywhere.currentCategory !== category) {
@@ -34,9 +38,6 @@ ToolBar {
                 }
             }
 
-            tooltip: "Select category"
-            text: "C&ategory"
-            iconSource: PathResolver.categoryIcon(NoteEverywhere.currentCategory)
             menu: Menu {
                 MenuItem {
                     text: "&Work"

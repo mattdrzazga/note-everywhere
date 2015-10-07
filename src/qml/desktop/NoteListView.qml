@@ -54,18 +54,12 @@ Rectangle {
     Menu {
         id: contextMenu
         MenuItem {
-            text: "Rename"
-            iconName: "document-edit"
-            onTriggered: {
-                renameNoteDialog.open()
-            }
+            action: toolbar.noteListActions.renameAction
+            onTriggered: renameNoteDialog.open()
         }
         MenuItem {
-            text: "Delete"
-            iconName: "edit-delete"
-            onTriggered: {
-                deleteNoteDialog.onYes() // THIS IS A GENIUS MOVE
-            }
+            action: toolbar.noteListActions.deleteAction
+            onTriggered: deleteNoteDialog.open()
         }
     }
 
@@ -107,8 +101,6 @@ Rectangle {
                 currentIndex = 0
             }
         }
-
-        Keys.onDeletePressed: deleteNoteDialog.open()
 
         Component.onCompleted: NoteEverywhere.populateModel()
     }

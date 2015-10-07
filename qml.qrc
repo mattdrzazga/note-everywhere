@@ -13,5 +13,6 @@
     </qresource>
     <qresource prefix="/core">
         <file>src/qml/core/TextEditActions.qml</file>
+        <file>src/qml/core/NoteListActions.qml</file>
     </qresource>
 </RCC>
