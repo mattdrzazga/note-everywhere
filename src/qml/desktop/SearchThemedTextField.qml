@@ -26,7 +26,7 @@ TextField {
 
                 Image {
                     anchors.fill: parent
-                    source: "file:/usr/share/icons/breeze/actions/toolbar/edit-clear.svg"
+                    source: "file:/usr/share/icons/breeze/actions/24/edit-clear.svg"
                 }
             }
         }

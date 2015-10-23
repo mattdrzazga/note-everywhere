@@ -7,5 +7,6 @@
         <file>images/linux/flag-grey.svg</file>
         <file>images/linux/flag-red.svg</file>
         <file>images/linux/flag-yellow.svg</file>
+        <file>images/linux/edit-clear.svg</file>
     </qresource>
 </RCC>
