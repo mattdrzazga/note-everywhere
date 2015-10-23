@@ -15,7 +15,7 @@ Item {
         iconSource: PathResolver.iconPath("document-new");
         tooltip: "Create new note"
         text: "Create &note"
-        shortcut: "Ctrl+n"
+        shortcut: StandardKey.New
     }
 
     Action {
@@ -24,7 +24,7 @@ Item {
         iconSource: PathResolver.iconPath("view-refresh");
         tooltip: "Refresh"
         text: "&Refresh"
-        shortcut: "F5"
+        shortcut: StandardKey.Refresh
     }
 
     Action {

@@ -9,6 +9,7 @@ ToolBar {
     id: toolBar
     property alias createNewNoteButton: createNewNoteButton
     property alias noteListActions: noteListActions
+    property alias searchTextField: searchTextField
 
     NoteListActions {
         id: noteListActions

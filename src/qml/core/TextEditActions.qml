@@ -23,7 +23,7 @@ Item {
         iconSource: PathResolver.iconPath("");
         tooltip: "Bold"
         checkable: true
-        shortcut: "Ctrl+o"
+        shortcut: StandardKey.Bold
     }
 
     Action {
@@ -32,7 +32,7 @@ Item {
         iconSource: PathResolver.iconPath("");
         tooltip: "Italic"
         checkable: true
-        shortcut: "Ctrl+i"
+        shortcut: StandardKey.Italic
     }
 
     Action {
@@ -41,7 +41,7 @@ Item {
         iconSource: PathResolver.iconPath("");
         tooltip: "Underline"
         checkable: true
-        shortcut: "Ctrl+u"
+        shortcut: StandardKey.Underline
     }
 
     Action {
@@ -129,4 +129,3 @@ Item {
         id: alignmentExclusiveGroup
     }
 }
-

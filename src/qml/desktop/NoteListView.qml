@@ -100,6 +100,10 @@ Rectangle {
                 listView.positionViewAtBeginning()
                 currentIndex = 0
             }
+            else if (event.key === Qt.Key_Find){ //TODO Czemu to nie działa?
+                console.log("find clicked")
+                toolbar.searchTextField.forceActiveFocus()
+            }
         }
 
         Component.onCompleted: NoteEverywhere.populateModel()
