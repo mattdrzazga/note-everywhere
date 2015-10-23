@@ -27,46 +27,25 @@ ToolBar {
             onClicked: NoteEverywhere.notesFor(searchTextField.text)
         }
 
+
+        CategoryMenu {
+            id: categoryMenu
+            workCategoryButton.onTriggered: categoryButton.searchForCategory(Ne.WORK)
+            entertainmentCategoryButton.onTriggered: categoryButton.searchForCategory(Ne.ENTERTAINMENT)
+            hobbyCategoryButton.onTriggered: categoryButton.searchForCategory(Ne.HOBBY)
+            homeCategoryButton.onTriggered: categoryButton.searchForCategory(Ne.HOME)
+            noneCategoryButton.onTriggered: categoryButton.searchForCategory(Ne.NONE)
+        }
+
         ToolButton {
             id: categoryButton
             action: noteListActions.categoryAction
+            onClicked: categoryMenu.popup()
 
             function searchForCategory(category) {
                 if (NoteEverywhere.currentCategory !== category) {
                     NoteEverywhere.currentCategory = category
                     NoteEverywhere.notesFor(searchTextField.text)
-                }
-            }
-
-            menu: Menu {
-                MenuItem {
-                    text: "&Work"
-                    iconSource: PathResolver.categoryIcon(Ne.WORK)
-                    onTriggered: categoryButton.searchForCategory(Ne.WORK)
-                }
-
-                MenuItem {
-                    text: "&Entertainment"
-                    iconSource: PathResolver.categoryIcon(Ne.ENTERTAINMENT)
-                    onTriggered: categoryButton.searchForCategory(Ne.ENTERTAINMENT)
-                }
-
-                MenuItem {
-                    text: "&Hobby"
-                    iconSource: PathResolver.categoryIcon(Ne.HOBBY)
-                    onTriggered: categoryButton.searchForCategory(Ne.HOBBY)
-                }
-
-                MenuItem {
-                    text: "H&ome"
-                    iconSource: PathResolver.categoryIcon(Ne.HOME)
-                    onTriggered: categoryButton.searchForCategory(Ne.HOME)
-                }
-
-                MenuItem {
-                    text: "&None"
-                    iconSource: PathResolver.categoryIcon(Ne.NONE)
-                    onTriggered: categoryButton.searchForCategory(Ne.NONE)
                 }
             }
         }

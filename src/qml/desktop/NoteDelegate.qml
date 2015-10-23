@@ -2,6 +2,7 @@ import QtQuick 2.5
 import QtQuick.Layouts 1.2
 import QtQuick.Controls 1.4
 import NoteEverywhere 1.0
+import "qrc:/core/src/qml/core"
 
 Item {
     id: root
@@ -61,36 +62,16 @@ Item {
 
             iconSource: PathResolver.categoryIcon(model.category)
             Layout.alignment: Qt.AlignRight
-            menu: Menu {
-                MenuItem {
-                    text: "Work"
-                    iconSource: PathResolver.categoryIcon(Ne.WORK)
-                    onTriggered: toolButton.onTriggeredSlot(Ne.WORK)
-                }
 
-                MenuItem {
-                    text: "Entertainment"
-                    iconSource: PathResolver.categoryIcon(Ne.ENTERTAINMENT)
-                    onTriggered: toolButton.onTriggeredSlot(Ne.ENTERTAINMENT)
-                }
+            onClicked: categoryMenu.popup()
 
-                MenuItem {
-                    text: "Hobby"
-                    iconSource: PathResolver.categoryIcon(Ne.HOBBY)
-                    onTriggered: toolButton.onTriggeredSlot(Ne.HOBBY)
-                }
-
-                MenuItem {
-                    text: "Home"
-                    iconSource: PathResolver.categoryIcon(Ne.HOME)
-                    onTriggered: toolButton.onTriggeredSlot(Ne.HOME)
-                }
-
-                MenuItem {
-                    text: "None"
-                    iconSource: PathResolver.categoryIcon(Ne.NONE)
-                    onTriggered: toolButton.onTriggeredSlot(Ne.NONE)
-                }
+            CategoryMenu {
+                id: categoryMenu
+                workCategoryButton.onTriggered: toolButton.onTriggeredSlot(Ne.WORK)
+                entertainmentCategoryButton.onTriggered: toolButton.onTriggeredSlot(Ne.ENTERTAINMENT)
+                hobbyCategoryButton.onTriggered: toolButton.onTriggeredSlot(Ne.HOBBY)
+                homeCategoryButton.onTriggered: toolButton.onTriggeredSlot(Ne.HOME)
+                noneCategoryButton.onTriggered: toolButton.onTriggeredSlot(Ne.NONE)
             }
         }
     }
