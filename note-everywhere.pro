@@ -8,7 +8,8 @@ SOURCES += src/c++/main.cpp \
     src/c++/noteeverywhere.cpp \
     src/c++/notevalues.cpp \
     src/c++/notemodel.cpp \
-    src/c++/sqlnoteinterface.cpp
+    src/c++/sqlnoteinterface.cpp \
+    src/c++/textformatter.cpp
 
 RESOURCES += qml.qrc \
     images.qrc
@@ -25,4 +26,5 @@ HEADERS += \
     src/c++/noteeverywhere.h \
     src/c++/notevalues.h \
     src/c++/notemodel.h \
-    src/c++/sqlnoteinterface.h
+    src/c++/sqlnoteinterface.h \
+    src/c++/textformatter.h

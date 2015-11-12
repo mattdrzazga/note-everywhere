@@ -5,6 +5,11 @@ import "qrc:/core/src/qml/core"
 
 ToolBar {
 
+    property alias boldButton: boldButton
+    property alias italicButton: italicButton
+    property alias underlineButton: underlineButton
+    property alias strikethroughButton: strikethroughButton
+
     TextEditActions {
         id: textEditActions
     }
