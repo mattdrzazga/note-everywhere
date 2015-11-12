@@ -19,6 +19,7 @@ class TextFormatter : public QObject
     Q_PROPERTY(bool bold READ bold WRITE setBold NOTIFY boldChanged)
     Q_PROPERTY(bool italic READ italic WRITE setItalic NOTIFY italicChanged)
     Q_PROPERTY(bool underline READ underline WRITE setUnderline NOTIFY underlineChanged)
+    Q_PROPERTY(bool strikethrough READ strikethrough WRITE setStrikethrough NOTIFY strikethroughChanged)
     Q_PROPERTY(Qt::Alignment alignment READ alignment WRITE setAlignment NOTIFY alignmentChanged)
     Q_PROPERTY(QColor textColor READ textColor WRITE setTextColor NOTIFY textColorChanged)
     Q_PROPERTY(int fontSize READ fontSize WRITE setFontSize NOTIFY fontSizeChanged)
@@ -36,6 +37,7 @@ public:
     bool bold() const;
     bool italic() const;
     bool underline() const;
+    bool strikethrough() const;
     Qt::Alignment alignment() const;
     QColor textColor() const;
     int fontSize() const;
@@ -55,6 +57,7 @@ signals:
     void boldChanged();
     void italicChanged();
     void underlineChanged();
+    void strikethroughChanged();
     void alignmentChanged();
     void textColorChanged();
     void fontFamilyChanged();
@@ -72,6 +75,7 @@ public slots:
     void setBold(bool bold);
     void setItalic(bool italic);
     void setUnderline(bool underline);
+    void setStrikethrough(bool strikethrough);
     void setAlignment(Qt::Alignment alignment);
     void setTextColor(const QColor &color);
     void setFontSize(int fontSize);

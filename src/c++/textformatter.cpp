@@ -40,6 +40,14 @@ bool TextFormatter::underline() const
     return cursor.charFormat().fontUnderline();
 }
 
+bool TextFormatter::strikethrough() const
+{
+    QTextCursor cursor = textCursor();
+    if (cursor.isNull())
+        return false;
+    return cursor.charFormat().fontStrikeOut();
+}
+
 Qt::Alignment TextFormatter::alignment() const
 {
     QTextCursor cursor = textCursor();
@@ -107,6 +115,7 @@ void TextFormatter::reset()
     emit boldChanged();
     emit italicChanged();
     emit underlineChanged();
+    emit strikethroughChanged();
     emit fontSizeChanged();
     emit textColorChanged();
     emit listFormatChanged();
@@ -142,6 +151,14 @@ void TextFormatter::setUnderline(bool underline)
     format.setFontUnderline(underline);
     applyFormat(format);
     emit underlineChanged();
+}
+
+void TextFormatter::setStrikethrough(bool strikethrough)
+{
+    QTextCharFormat format;
+    format.setFontStrikeOut(strikethrough);
+    applyFormat(format);
+    emit strikethroughChanged();
 }
 
 void TextFormatter::setFontSize(int fontSize)

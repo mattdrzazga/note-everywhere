@@ -9,6 +9,7 @@ Item {
         boldButton.onClicked:           textFormatter.bold      = !textFormatter.bold
         italicButton.onClicked:         textFormatter.italic    = !textFormatter.italic
         underlineButton.onClicked:      textFormatter.underline = !textFormatter.underline
+        strikethroughButton.onClicked:  textFormatter.strikethrough = !textFormatter.strikethrough
     }
 
     TextArea {
@@ -31,6 +32,7 @@ Item {
         onBoldChanged: noteEditFrameToolbar.boldButton.checked = bold
         onItalicChanged: noteEditFrameToolbar.italicButton.checked = italic
         onUnderlineChanged: noteEditFrameToolbar.underlineButton.checked = underline
+        onStrikethroughChanged: noteEditFrameToolbar.strikethroughButton.checked = strikethrough
         text: NoteEverywhere.currentNote.content
     }
 
