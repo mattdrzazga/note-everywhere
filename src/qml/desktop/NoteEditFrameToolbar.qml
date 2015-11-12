@@ -17,6 +17,10 @@ ToolBar {
     property alias orderedListButton: orderedListButton
     property alias decreaseIndentButton: decreaseIndentButton
     property alias increaseIndentButton: increaseIndentButton
+    property alias alignLeftAction : textEditActions.alignLeftAction
+    property alias centerHorizontallyAction : textEditActions.centerHorizontallyAction
+    property alias alignRightAction : textEditActions.alignRightAction
+    property alias alignJustifyAction : textEditActions.alignJustifyAction
 
 
     TextEditActions {

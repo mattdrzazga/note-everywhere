@@ -37,6 +37,7 @@ Item {
     TextFormatter{
         id: textFormatter
         target: contentTextArea
+        text: NoteEverywhere.currentNote? NoteEverywhere.currentNote.content : " "
         cursorPosition: contentTextArea.cursorPosition
         selectionStart: contentTextArea.selectionStart
         selectionEnd: contentTextArea.selectionEnd
@@ -44,6 +45,22 @@ Item {
         onItalicChanged: noteEditFrameToolbar.italicButton.checked = italic
         onUnderlineChanged: noteEditFrameToolbar.underlineButton.checked = underline
         onStrikethroughChanged: noteEditFrameToolbar.strikethroughButton.checked = strikethrough
-        text: NoteEverywhere.currentNote? NoteEverywhere.currentNote.content : " "
+
+        onAlignmentChanged:{
+            var currentAlignment = alignment
+
+            if (currentAlignment == Qt.AlignLeft){
+                noteEditFrameToolbar.alignLeftAction.checked = true
+            }
+            else if (currentAlignment == Qt.AlignHCenter){
+                noteEditFrameToolbar.centerHorizontallyAction.checked = true
+            }
+            else if (currentAlignment == Qt.AlignRight){
+                noteEditFrameToolbar.alignRightAction.checked = true
+            }
+            else if (currentAlignment == Qt.AlignJustify){
+                noteEditFrameToolbar.alignJustifyAction.checked = true
+            }
+        }
     }
 }
