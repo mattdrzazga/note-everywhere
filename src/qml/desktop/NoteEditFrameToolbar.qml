@@ -9,6 +9,15 @@ ToolBar {
     property alias italicButton: italicButton
     property alias underlineButton: underlineButton
     property alias strikethroughButton: strikethroughButton
+    property alias alignLeftButton: alignLeftButton
+    property alias alignCenterButton: alignCenterButton
+    property alias alignRightButton: alignRightButton
+    property alias alignJustifyButton: alignJustifyButton
+    property alias unorderedListButton: unorderedListButton
+    property alias orderedListButton: orderedListButton
+    property alias decreaseIndentButton: decreaseIndentButton
+    property alias increaseIndentButton: increaseIndentButton
+
 
     TextEditActions {
         id: textEditActions
@@ -72,12 +81,12 @@ ToolBar {
         }
 
         ToolButton {
-            id: decreaseIndendButton
+            id: decreaseIndentButton
             action: textEditActions.decreaseIndentButton
         }
 
         ToolButton {
-            id: increaseIndendButton
+            id: increaseIndentButton
             action: textEditActions.decreaseIndentButton
         }
 

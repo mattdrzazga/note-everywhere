@@ -10,6 +10,16 @@ Item {
         italicButton.onClicked:         textFormatter.italic    = !textFormatter.italic
         underlineButton.onClicked:      textFormatter.underline = !textFormatter.underline
         strikethroughButton.onClicked:  textFormatter.strikethrough = !textFormatter.strikethrough
+
+        alignLeftButton.onClicked:      textFormatter.alignment = Qt.AlignLeft
+        alignCenterButton.onClicked:    textFormatter.alignment = Qt.AlignHCenter
+        alignRightButton.onClicked:     textFormatter.alignment = Qt.AlignRight
+        alignJustifyButton.onClicked:   textFormatter.alignment = Qt.AlignJustify
+
+        unorderedListButton.onClicked:  textFormatter.setUnorderedListFormat()
+        orderedListButton.onClicked:    textFormatter.setOrderedListFormat()
+        increaseIndentButton.onClicked: textFormatter.increaseIndent()
+        decreaseIndentButton.onClicked: textFormatter.decreaseIndent()
     }
 
     TextArea {
@@ -20,6 +30,7 @@ Item {
         frameVisible: false
         textFormat: TextEdit.RichText
         text: textFormatter.text
+        enabled: NoteEverywhere.currentNote? true : false
     }
 
 
@@ -33,7 +44,6 @@ Item {
         onItalicChanged: noteEditFrameToolbar.italicButton.checked = italic
         onUnderlineChanged: noteEditFrameToolbar.underlineButton.checked = underline
         onStrikethroughChanged: noteEditFrameToolbar.strikethroughButton.checked = strikethrough
-        text: NoteEverywhere.currentNote.content
+        text: NoteEverywhere.currentNote? NoteEverywhere.currentNote.content : " "
     }
-
 }
