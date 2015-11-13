@@ -85,12 +85,12 @@ ToolBar {
         }
 
         ToolButton {
-            id: decreaseIndentButton
-            action: textEditActions.decreaseIndentButton
+            id: increaseIndentButton
+            action: textEditActions.increaseIndentButton
         }
 
         ToolButton {
-            id: increaseIndentButton
+            id: decreaseIndentButton
             action: textEditActions.decreaseIndentButton
         }
 
