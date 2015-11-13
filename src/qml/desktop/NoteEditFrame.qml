@@ -4,6 +4,23 @@ import NoteEverywhere 1.0
 
 Item {
 
+    Component.onDestruction: {
+        if (NoteEverywhere.currentNote){
+            if (NoteEverywhere.currentNote.content !== contentTextArea.text){
+                NoteEverywhere.sqlInterface.updateNoteContent(NoteEverywhere.currentNote.id, contentTextArea.text)
+            }
+        }
+    }
+
+
+    Connections {
+        target: NoteEverywhere
+        onCurrentNoteChanged: {
+            saveCurrentNote(NoteEverywhere.previousNote)
+            textFormatter.text = NoteEverywhere.currentNote? NoteEverywhere.currentNote.content : " "
+        }
+    }
+
     NoteEditFrameToolbar {
         id: noteEditFrameToolbar
         boldButton.onClicked:           textFormatter.bold      = !textFormatter.bold
@@ -31,13 +48,13 @@ Item {
         textFormat: TextEdit.RichText
         text: textFormatter.text
         enabled: NoteEverywhere.currentNote? true : false
+        onTextChanged: syncTimer.restart()
     }
 
 
     TextFormatter{
         id: textFormatter
         target: contentTextArea
-        text: NoteEverywhere.currentNote? NoteEverywhere.currentNote.content : " "
         cursorPosition: contentTextArea.cursorPosition
         selectionStart: contentTextArea.selectionStart
         selectionEnd: contentTextArea.selectionEnd
@@ -46,7 +63,7 @@ Item {
         onUnderlineChanged: noteEditFrameToolbar.underlineButton.checked = underline
         onStrikethroughChanged: noteEditFrameToolbar.strikethroughButton.checked = strikethrough
 
-        onAlignmentChanged:{
+        onAlignmentChanged: {
             var currentAlignment = alignment
 
             if (currentAlignment == Qt.AlignLeft){
@@ -61,6 +78,20 @@ Item {
             else if (currentAlignment == Qt.AlignJustify){
                 noteEditFrameToolbar.alignJustifyAction.checked = true
             }
+        }
+    }
+
+    Timer {
+        id: syncTimer
+        interval: 5000
+        onTriggered: saveCurrentNote(NoteEverywhere.currentNote)
+    }
+
+    function saveCurrentNote(note) {
+        if (!note) return
+        if (note.content !== contentTextArea.text){
+            note.content = contentTextArea.text
+            NoteEverywhere.sqlInterface.updateNoteContent(note.id, contentTextArea.text)
         }
     }
 }

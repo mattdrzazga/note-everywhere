@@ -3,7 +3,7 @@
 #include <QScreen>
 #include <QDebug>
 
-NoteEverywhere::NoteEverywhere(QObject *parent) : QObject(parent), m_model(0), m_currentNote(0) //TODO check if crash persists when not initializing m_currentNote
+NoteEverywhere::NoteEverywhere(QObject *parent) : QObject(parent), m_model(0), m_currentNote(0), m_previousNote(0) //TODO check if crash persists when not initializing m_currentNote
 {
     m_isMobile = false;
 #if defined(Q_OS_ANDROID) || defined(Q_OS_IOS) || defined(Q_OS_BLACKBERRY)
@@ -28,6 +28,7 @@ void NoteEverywhere::setCurrentCategory(const NoteValues::Category &category)
 void NoteEverywhere::setCurrentNote(Note *currentNote)
 {
     if (m_currentNote != currentNote){
+        m_previousNote = m_currentNote;
         m_currentNote = currentNote;
         emit currentNoteChanged();
     }
