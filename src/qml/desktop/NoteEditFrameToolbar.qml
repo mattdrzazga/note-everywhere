@@ -94,6 +94,20 @@ ToolBar {
             action: textEditActions.decreaseIndentButton
         }
 
+        ToolButton {
+            id: selectFontColorButton
+            action: textEditActions.selectFontColorButton
+
+            Rectangle {
+                width: parent.width * 0.8
+                height: 3 * NoteEverywhere.ratio
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 3 * NoteEverywhere.ratio
+                color: "green"
+            }
+        }
+
         Item { Layout.fillWidth: true }
     }
 }

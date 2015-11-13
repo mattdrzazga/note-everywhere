@@ -16,6 +16,7 @@ Item {
     property alias orderedListButton: orderedListButton
     property alias decreaseIndentButton: decreaseIndentButton
     property alias increaseIndentButton: increaseIndentButton
+    property alias selectFontColorButton: selectFontColorButton
 
     Action {
         id: boldAction
@@ -123,6 +124,13 @@ Item {
         iconSource: PathResolver.iconPath("");
         tooltip: "Decrease indent"
         shortcut: "Ctrl+["
+    }
+
+    Action {
+        id: selectFontColorButton
+        iconName: "gtk-select-font"
+        iconSource: PathResolver.iconPath("")
+        tooltip: "Select font color"
     }
 
     ExclusiveGroup {
