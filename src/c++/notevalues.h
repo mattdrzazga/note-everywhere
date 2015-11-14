@@ -20,10 +20,6 @@ public:
     Q_ENUM(Category)
 
     static void registerEnums();
-
-signals:
-
-public slots:
 };
 
 #endif // NOTEVALUES_H

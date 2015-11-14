@@ -40,8 +40,6 @@ signals:
     void currentNoteChanged();
     void previousNoteChanged();
 
-public slots:
-
 private:
     qreal m_ratio;
     bool m_isMobile;

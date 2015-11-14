@@ -1,25 +1,34 @@
 #include "note.h"
 #include <QDebug>
 
-Note::Note(QObject *parent) : QObject(parent)
+Note::Note(QObject *parent):
+    QObject(parent),
+    m_id(-1),
+    m_name(QString()),
+    m_content(QString()),
+    m_category(NoteValues::NONE)
 {
 
 }
 
 Note::Note(const QString &name, const QString &content):
+    QObject(0),
+    m_id(-1),
     m_name(name),
-    m_content(content)
+    m_content(content),
+    m_category(NoteValues::NONE)
 {
 
 }
 
 Note::Note(const Note &note):
-    QObject(0)
+    QObject(0),
+    m_id(note.m_id),
+    m_name(note.m_name),
+    m_content(note.m_content),
+    m_category(note.m_category)
 {
-    m_id = note.m_id;
-    m_name = note.m_name;
-    m_content = note.m_content;
-    m_category = note.m_category;
+
 }
 
 Note::~Note()

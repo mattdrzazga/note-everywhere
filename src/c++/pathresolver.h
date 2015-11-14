@@ -21,10 +21,6 @@ public:
             path += "/";
         return path;
     }
-
-signals:
-
-public slots:
 };
 
 #endif // PATHRESOLVER_H
