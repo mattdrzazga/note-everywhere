@@ -15,6 +15,7 @@ class NoteEverywhere : public QObject
     Q_PROPERTY(SqlNoteInterface* sqlInterface READ sqlInterface CONSTANT)
     Q_PROPERTY(Note* currentNote READ currentNote WRITE setCurrentNote NOTIFY currentNoteChanged)
     Q_PROPERTY(Note* previousNote READ previousNote NOTIFY previousNoteChanged)
+    Q_PROPERTY(QObject* colors READ colors CONSTANT)
 
 public:
     explicit NoteEverywhere(QObject *parent = 0);
@@ -28,6 +29,7 @@ public:
     inline Note* previousNote() const { return m_previousNote; }
     void setCurrentCategory(const NoteValues::Category &category);
     void setCurrentNote(Note *currentNote);
+    QQmlPropertyMap *colors() const { return m_colors; }
 
     Q_INVOKABLE void populateModel();
     Q_INVOKABLE void notesFor(const QString &text);
@@ -48,6 +50,7 @@ private:
     SqlNoteInterface *m_sqlInterface;
     Note *m_currentNote;
     Note *m_previousNote;
+    QQmlPropertyMap *m_colors;
 };
 
 #endif // NOTEEVERYWHERE_H

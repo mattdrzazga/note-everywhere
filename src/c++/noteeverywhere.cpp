@@ -12,9 +12,13 @@ NoteEverywhere::NoteEverywhere(QObject *parent) : QObject(parent), m_model(0), m
 
     QRect rect = qApp->primaryScreen()->geometry();
     m_ratio = m_isMobile ? qMin(qMax(rect.width(), rect.height())/1136. , qMin(rect.width(), rect.height())/640.) : 1;
-    m_currentCategory = NoteValues::NONE;
+    m_currentCategory = NoteValues::NONE;       // TODO category that has been viewed before closing the app
 
     m_sqlInterface = new SqlNoteInterface(this);
+
+    m_colors = new QQmlPropertyMap(this);
+    m_colors->insert(QLatin1String("separator"), QVariant("#133a0f"));
+    m_colors->insert(QLatin1String("currentItem"), QVariant("#45a4af"));
 }
 
 void NoteEverywhere::setCurrentCategory(const NoteValues::Category &category)

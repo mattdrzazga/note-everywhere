@@ -14,7 +14,7 @@ Item {
     //  Highlight component
     Rectangle {
         anchors.fill: parent
-        color: root.ListView.isCurrentItem? "#45a4af" : "white"
+        color: root.ListView.isCurrentItem? NoteEverywhere.colors.currentItem : "white"
         opacity: 0.5
         Behavior on color { ColorAnimation { duration: 50 } }
     }
@@ -81,7 +81,7 @@ Item {
         width: parent.width
         height: 1
         anchors.bottom: parent.bottom
-        color: "#133a0f"
+        color: NoteEverywhere.colors.separator
         opacity: 0.3
     }
 }

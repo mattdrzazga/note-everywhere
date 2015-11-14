@@ -17,10 +17,12 @@ ToolBar {
     property alias orderedListButton: orderedListButton
     property alias decreaseIndentButton: decreaseIndentButton
     property alias increaseIndentButton: increaseIndentButton
-    property alias alignLeftAction : textEditActions.alignLeftAction
-    property alias centerHorizontallyAction : textEditActions.centerHorizontallyAction
-    property alias alignRightAction : textEditActions.alignRightAction
-    property alias alignJustifyAction : textEditActions.alignJustifyAction
+    property alias alignLeftAction: textEditActions.alignLeftAction
+    property alias centerHorizontallyAction: textEditActions.centerHorizontallyAction
+    property alias alignRightAction: textEditActions.alignRightAction
+    property alias alignJustifyAction: textEditActions.alignJustifyAction
+    property alias selectFontColorButton: selectFontColorButton
+    property alias fontColorIndicatorRectangle: fontColorIndicatorRectangle
 
 
     TextEditActions {
@@ -50,7 +52,7 @@ ToolBar {
             action: textEditActions.strikethroughAction
         }
 
-        Rectangle { width: 1; Layout.preferredHeight: parent.height * 0.7; color: "#133a0f" }
+        Rectangle { width: 1; Layout.preferredHeight: parent.height * 0.7; color: NoteEverywhere.colors.separator }
 
         ToolButton {
             id: alignLeftButton
@@ -72,7 +74,7 @@ ToolBar {
             action: textEditActions.alignJustifyAction
         }
 
-        Rectangle { width: 1; Layout.preferredHeight: parent.height * 0.7; color: "#133a0f" }
+        Rectangle { width: 1; Layout.preferredHeight: parent.height * 0.7; color: NoteEverywhere.colors.separator }
 
         ToolButton {
             id: unorderedListButton
@@ -99,12 +101,12 @@ ToolBar {
             action: textEditActions.selectFontColorButton
 
             Rectangle {
+                id: fontColorIndicatorRectangle
                 width: parent.width * 0.8
                 height: 3 * NoteEverywhere.ratio
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.bottom: parent.bottom
                 anchors.bottomMargin: 3 * NoteEverywhere.ratio
-                color: "green"
             }
         }
 

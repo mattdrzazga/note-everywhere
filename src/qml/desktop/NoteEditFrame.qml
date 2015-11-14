@@ -1,6 +1,7 @@
 import QtQuick 2.5
 import QtQuick.Controls 1.4
 import NoteEverywhere 1.0
+import QtQuick.Dialogs 1.2
 
 Item {
 
@@ -21,6 +22,20 @@ Item {
         }
     }
 
+    Loader {
+        id: colorDialogLoader
+        active: false
+        sourceComponent: ColorDialog {
+            title: "Select font color"
+            modality: Qt.WindowModal
+            visible: colorDialogLoader.active
+            onAccepted: {
+                textFormatter.textColor = color
+                colorDialogLoader.active = false
+            }
+        }
+    }
+
     NoteEditFrameToolbar {
         id: noteEditFrameToolbar
         boldButton.onClicked:           textFormatter.bold      = !textFormatter.bold
@@ -37,6 +52,7 @@ Item {
         orderedListButton.onClicked:    textFormatter.setOrderedListFormat()
         increaseIndentButton.onClicked: textFormatter.increaseIndent()
         decreaseIndentButton.onClicked: textFormatter.decreaseIndent()
+        selectFontColorButton.onClicked: colorDialogLoader.active = true
     }
 
     TextArea {
@@ -62,6 +78,7 @@ Item {
         onItalicChanged: noteEditFrameToolbar.italicButton.checked = italic
         onUnderlineChanged: noteEditFrameToolbar.underlineButton.checked = underline
         onStrikethroughChanged: noteEditFrameToolbar.strikethroughButton.checked = strikethrough
+        onTextColorChanged: noteEditFrameToolbar.fontColorIndicatorRectangle.color = textColor
 
         onAlignmentChanged: {
             var currentAlignment = alignment
