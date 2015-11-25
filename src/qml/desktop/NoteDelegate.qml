@@ -11,13 +11,13 @@ Item {
 
     property alias mouseArea: mouseArea
 
-        //  Highlight component
-        Rectangle {
-            anchors.fill: parent
-            color: root.ListView.isCurrentItem? NoteEverywhere.colors.currentItem : "white"
-            opacity: 0.5
-            Behavior on color { ColorAnimation { duration: 50 } }
-        }
+    //  Highlight component
+    Rectangle {
+        anchors.fill: parent
+        color: NoteEverywhere.colors.currentItem
+        visible: root.ListView.isCurrentItem
+    }
+
     Rectangle {
         anchors.fill: parent
         color: "#6dde3c"

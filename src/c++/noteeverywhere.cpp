@@ -18,7 +18,7 @@ NoteEverywhere::NoteEverywhere(QObject *parent) : QObject(parent), m_model(0), m
 
     m_colors = new QQmlPropertyMap(this);
     m_colors->insert(QLatin1String("separator"), QVariant("#133a0f"));
-    m_colors->insert(QLatin1String("currentItem"), QVariant("#45a4af"));
+    m_colors->insert(QLatin1String("currentItem"), QVariant("#6dde3c"));
 }
 
 void NoteEverywhere::setCurrentCategory(const NoteValues::Category &category)
