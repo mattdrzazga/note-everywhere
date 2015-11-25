@@ -4,7 +4,6 @@ import "qrc:/core/src/qml/core"
 Item {
     id: root
 
-
     CategoryListView {
         id: categoryListView
         y: noteListView.toolbar.height

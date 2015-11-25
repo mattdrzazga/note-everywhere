@@ -3,9 +3,10 @@ import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.2
 
 Item {
-    width: parent.width
-    height: 60
     id: root
+    width: parent.width
+    height: 50 * NoteEverywhere.ratio
+
     property alias mouseArea: mouseArea
 
     MouseArea {
