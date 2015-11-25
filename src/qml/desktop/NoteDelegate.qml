@@ -37,41 +37,16 @@ Item {
             //  Note Name
             Label {
                 id: noteLabel
-                Layout.preferredWidth: root.width - 20 * NoteEverywhere.ratio - toolButton.width
+                Layout.preferredWidth: root.width - 20 * NoteEverywhere.ratio
                 text: model.name
                 font.pixelSize: 13 * NoteEverywhere.ratio
             }
 
             //  Note last modification date and time
             Label {
-                Layout.preferredWidth: root.width - 20 * NoteEverywhere.ratio - toolButton.width
+                Layout.preferredWidth: root.width - 20 * NoteEverywhere.ratio
                 text: model.lastModificationDateTime.toLocaleString(Qt.locale(), Locale.ShortFormat)
                 font.pixelSize: 12 * NoteEverywhere.ratio
-            }
-        }
-            // Note category button
-        ToolButton {
-            id: toolButton
-
-            function onTriggeredSlot(category) {
-                if (model.category !== category){
-                    NoteEverywhere.model.setCategoryAt(model.index, category)
-                    NoteEverywhere.sqlInterface.updateNoteCategory(model.id, category)
-                }
-            }
-
-            iconSource: PathResolver.categoryIcon(model.category)
-            Layout.alignment: Qt.AlignRight
-
-            onClicked: categoryMenu.popup()
-
-            CategoryMenu {
-                id: categoryMenu
-                workCategoryButton.onTriggered: toolButton.onTriggeredSlot(Ne.WORK)
-                entertainmentCategoryButton.onTriggered: toolButton.onTriggeredSlot(Ne.ENTERTAINMENT)
-                hobbyCategoryButton.onTriggered: toolButton.onTriggeredSlot(Ne.HOBBY)
-                homeCategoryButton.onTriggered: toolButton.onTriggeredSlot(Ne.HOME)
-                noneCategoryButton.onTriggered: toolButton.onTriggeredSlot(Ne.NONE)
             }
         }
     }

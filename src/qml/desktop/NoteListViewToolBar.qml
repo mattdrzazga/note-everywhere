@@ -28,29 +28,6 @@ ToolBar {
             onClicked: NoteEverywhere.notesFor(searchTextField.text)
         }
 
-
-        CategoryMenu {
-            id: categoryMenu
-            workCategoryButton.onTriggered: categoryButton.searchForCategory(Ne.WORK)
-            entertainmentCategoryButton.onTriggered: categoryButton.searchForCategory(Ne.ENTERTAINMENT)
-            hobbyCategoryButton.onTriggered: categoryButton.searchForCategory(Ne.HOBBY)
-            homeCategoryButton.onTriggered: categoryButton.searchForCategory(Ne.HOME)
-            noneCategoryButton.onTriggered: categoryButton.searchForCategory(Ne.NONE)
-        }
-
-        ToolButton {
-            id: categoryButton
-            action: noteListActions.categoryAction
-            onClicked: categoryMenu.popup()
-
-            function searchForCategory(category) {
-                if (NoteEverywhere.currentCategory !== category) {
-                    NoteEverywhere.currentCategory = category
-                    NoteEverywhere.notesFor(searchTextField.text)
-                }
-            }
-        }
-
         Item { Layout.fillWidth: true }
 
         SearchThemedTextField {
