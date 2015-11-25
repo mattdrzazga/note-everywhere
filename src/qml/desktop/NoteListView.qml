@@ -5,6 +5,7 @@ import QtQuick.Controls.Styles 1.4
 import QtQuick.Dialogs 1.2
 
 Rectangle {
+    property alias toolbar: toolbar
 
     NoteListViewToolBar {
         id: toolbar

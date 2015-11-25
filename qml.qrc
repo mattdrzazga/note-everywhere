@@ -15,5 +15,7 @@
         <file>src/qml/core/TextEditActions.qml</file>
         <file>src/qml/core/NoteListActions.qml</file>
         <file>src/qml/core/CategoryMenu.qml</file>
+        <file>src/qml/core/CategoryListView.qml</file>
+        <file>src/qml/core/CategoryDelegate.qml</file>
     </qresource>
 </RCC>

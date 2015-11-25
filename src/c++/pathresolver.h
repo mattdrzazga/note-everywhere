@@ -10,7 +10,6 @@ class PathResolver : public QObject
 public:
     explicit PathResolver(QObject *parent = 0);
     Q_INVOKABLE QString iconPath(const QString &iconName) const;
-    Q_INVOKABLE QString categoryIcon(int category) const;
 
     Q_INVOKABLE inline static QString appLocalDataLocation() {
         QString path = QStandardPaths::standardLocations(QStandardPaths::AppLocalDataLocation).value(0);

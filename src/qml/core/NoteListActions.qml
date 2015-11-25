@@ -5,7 +5,6 @@ Item {
 
     property alias createNewNoteAction: createNewNoteAction
     property alias refreshAction: refreshAction
-    property alias categoryAction: categoryAction
     property alias renameAction: renameAction
     property alias deleteAction: deleteAction
 
@@ -25,13 +24,6 @@ Item {
         tooltip: "Refresh"
         text: "&Refresh"
         shortcut: StandardKey.Refresh
-    }
-
-    Action {
-        id: categoryAction
-        tooltip: "Select category"
-        text: "C&ategory"
-        iconSource: PathResolver.categoryIcon(NoteEverywhere.currentCategory)
     }
 
     Action {
