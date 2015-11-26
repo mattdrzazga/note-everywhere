@@ -67,7 +67,8 @@ Rectangle {
         model: NoteEverywhere.model
         boundsBehavior: Flickable.DragOverBounds
         focus: true
-        highlightMoveDuration: 100
+        highlightMoveDuration: 10
+        highlightMoveVelocity: 1000
 
         delegate: NoteDelegate {
             mouseArea.onClicked: {
@@ -77,6 +78,11 @@ Rectangle {
                 }
             }
         }
+
+        highlight: Rectangle {
+            color: NoteEverywhere.colors.currentItem
+        }
+
         onCurrentIndexChanged: {
             NoteEverywhere.currentNote = NoteEverywhere.model.getNote(currentIndex)
         }
