@@ -2,32 +2,27 @@ import QtQuick 2.5
 import QtQuick.Controls 1.4
 import NoteEverywhere 1.0
 
-Item {
+Rectangle {
 
     ListView {
         id: listView
         anchors.fill: parent
         boundsBehavior: Flickable.StopAtBounds
+        highlightMoveVelocity: 1000
+        highlightMoveDuration: 10
+        focus: true
+        highlight: Rectangle { color: "grey" }
+
         delegate: CategoryDelegate {
             mouseArea.onClicked: {
                 listView.currentIndex = index
                 if (NoteEverywhere.currentCategory !== category) {
                     NoteEverywhere.currentCategory = category
+                    console.log("changing category for: " + category)
                     NoteEverywhere.notesFor("")
                 }
             }
         }
-
-        highlightMoveVelocity: 1000
-        highlightMoveDuration: 10
-        focus: true
-
-        Rectangle {
-            anchors.fill: parent
-            z: -1
-        }
-
-        highlight: Rectangle {color: "grey"}
 
         model: ListModel{
             ListElement { name: "Work"; category: Ne.WORK }

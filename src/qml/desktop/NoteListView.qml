@@ -65,7 +65,7 @@ Rectangle {
         anchors.bottom: parent.bottom
         width: parent.width
         model: NoteEverywhere.model
-        boundsBehavior: Flickable.DragOverBounds
+        boundsBehavior: Flickable.StopAtBounds
         focus: true
         highlightMoveDuration: 10
         highlightMoveVelocity: 1000
