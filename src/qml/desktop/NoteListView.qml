@@ -69,6 +69,7 @@ Rectangle {
         focus: true
         highlightMoveDuration: 10
         highlightMoveVelocity: 1000
+        clip: true
 
         delegate: NoteDelegate {
             mouseArea.onClicked: {

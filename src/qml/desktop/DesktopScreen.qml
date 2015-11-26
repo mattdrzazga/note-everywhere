@@ -33,7 +33,7 @@ Item {
     NoteEditFrame {
         anchors.left: noteListView.right
         anchors.right: parent.right
-        anchors.leftMargin: 3 * NoteEverywhere.ratio
+        anchors.leftMargin: 2 * NoteEverywhere.ratio
         height: parent.height
     }
 }
