@@ -46,6 +46,6 @@ void NoteEverywhere::populateModel()
 
 void NoteEverywhere::notesFor(const QString &text)
 {
-    m_model = m_sqlInterface->notesFor(text, NoteValues::NONE);
+    m_model = m_sqlInterface->notesFor(text, m_currentCategory);
     emit modelChanged();
 }
