@@ -5,18 +5,13 @@ import QtQuick.Controls.Styles 1.4
 import QtQuick.Dialogs 1.2
 
 Rectangle {
-    property alias toolbar: toolbar
+    property NoteListViewToolBar toolBar
 
-    NoteListViewToolBar {
-        id: toolbar
-        z: 1
-
-        createNewNoteButton.onClicked: {
-            var rowId = NoteEverywhere.sqlInterface.addNote("New Note", "", NoteEverywhere.currentCategory)
-            NoteEverywhere.model.addNote(rowId, "New Note", "", NoteEverywhere.currentCategory)
-            listView.positionViewAtEnd()
-            listView.currentIndex = NoteEverywhere.model.size - 1
-        }
+    function createNewNote() {
+        var rowId = NoteEverywhere.sqlInterface.addNote("New Note", "", NoteEverywhere.currentCategory)
+        NoteEverywhere.model.addNote(rowId, "New Note", "", NoteEverywhere.currentCategory)
+        listView.positionViewAtEnd()
+        listView.currentIndex = NoteEverywhere.model.size - 1
     }
 
     MessageDialog {
@@ -55,18 +50,18 @@ Rectangle {
     Menu {
         id: contextMenu
         MenuItem {
-            action: toolbar.noteListActions.renameAction
+            action: toolBar.noteListActions.renameAction
             onTriggered: renameNoteDialog.open()
         }
         MenuItem {
-            action: toolbar.noteListActions.deleteAction
+            action: toolBar.noteListActions.deleteAction
             onTriggered: deleteNoteDialog.open()
         }
     }
 
     ListView {
         id: listView
-        anchors.top: toolbar.bottom
+        anchors.top: parent.top
         anchors.bottom: parent.bottom
         width: parent.width
         model: NoteEverywhere.model

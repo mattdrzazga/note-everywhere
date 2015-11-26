@@ -4,21 +4,30 @@ import "qrc:/core/src/qml/core"
 Item {
     id: root
 
+
+    NoteListViewToolBar {
+        id: noteListViewToolBar
+        z: 1
+        createNewNoteButton.onClicked: noteListView.createNewNote()
+        width: categoryListView.width + noteListView.width
+    }
+
     CategoryListView {
         id: categoryListView
-        y: noteListView.toolbar.height
+        anchors.top: noteListViewToolBar.bottom
+        anchors.bottom: parent.bottom
         width: 150 * NoteEverywhere.ratio
         height: parent.height
     }
 
     NoteListView {
         id: noteListView
-        toolbar.x: -categoryListView.width
-        toolbar.width: categoryListView.width + width
         width: 200 * NoteEverywhere.ratio
-        height: parent.height
+        anchors.top: noteListViewToolBar.bottom
+        anchors.bottom: parent.bottom
         anchors.left: categoryListView.right
         anchors.leftMargin: 2 * NoteEverywhere.ratio
+        toolBar: noteListViewToolBar
     }
 
     NoteEditFrame {
