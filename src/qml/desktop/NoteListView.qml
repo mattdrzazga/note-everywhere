@@ -23,6 +23,7 @@ Rectangle {
             var id = NoteEverywhere.currentNote.id
             NoteEverywhere.sqlInterface.deleteNote(id)
             NoteEverywhere.model.removeNote(listView.currentIndex)
+            listView.onCurrentIndexChanged()
         }
     }
 
