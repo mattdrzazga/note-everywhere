@@ -17,7 +17,7 @@ Item {
 
     Rectangle {
         anchors.fill: parent
-        color: "#6dde3c"
+        color: NoteEverywhere.colors.currentItem
         opacity: mouseArea.containsMouse && !root.ListView.isCurrentItem? 0.3 : 0.0
 
         Behavior on opacity {

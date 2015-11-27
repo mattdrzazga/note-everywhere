@@ -11,7 +11,7 @@ Rectangle {
         highlightMoveVelocity: 1000
         highlightMoveDuration: 10
         focus: true
-        highlight: Rectangle { color: "grey" }
+        highlight: Rectangle { color: NoteEverywhere.colors.currentItem }
 
         delegate: CategoryDelegate {
             mouseArea.onClicked: {

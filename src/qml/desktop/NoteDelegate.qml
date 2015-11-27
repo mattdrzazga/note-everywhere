@@ -13,7 +13,7 @@ Item {
 
     Rectangle {
         anchors.fill: parent
-        color: "#6dde3c"
+        color: NoteEverywhere.colors.currentItem
         opacity: mouseArea.containsMouse && !root.ListView.isCurrentItem? 0.3 : 0.0
 
         Behavior on opacity {
@@ -50,7 +50,7 @@ Item {
         Label {
             Layout.preferredWidth: root.width - 20 * NoteEverywhere.ratio
             text: model.lastModificationDateTime.toLocaleString(Qt.locale(), Locale.ShortFormat)
-            font.pixelSize: 12 * NoteEverywhere.ratio
+            font.pixelSize: 11 * NoteEverywhere.ratio
         }
     }
 }
