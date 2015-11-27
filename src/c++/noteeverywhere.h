@@ -16,6 +16,7 @@ class NoteEverywhere : public QObject
     Q_PROPERTY(Note* currentNote READ currentNote WRITE setCurrentNote NOTIFY currentNoteChanged)
     Q_PROPERTY(Note* previousNote READ previousNote NOTIFY previousNoteChanged)
     Q_PROPERTY(QObject* colors READ colors CONSTANT)
+    Q_PROPERTY(QString searchQuery WRITE setSearchQuery)
 
 public:
     explicit NoteEverywhere(QObject *parent = 0);
@@ -30,9 +31,10 @@ public:
     void setCurrentCategory(const NoteValues::Category &category);
     void setCurrentNote(Note *currentNote);
     QQmlPropertyMap *colors() const { return m_colors; }
+    void setSearchQuery(const QString &searchQuery);
 
     Q_INVOKABLE void populateModel();
-    Q_INVOKABLE void notesFor(const QString &text);
+    Q_INVOKABLE void searchNotes();
 
 signals:
     void currentCategoryChanged(NoteValues::Category);
@@ -49,6 +51,7 @@ private:
     Note *m_currentNote;
     Note *m_previousNote;
     QQmlPropertyMap *m_colors;
+    QString m_searchQuery;
 };
 
 #endif // NOTEEVERYWHERE_H
