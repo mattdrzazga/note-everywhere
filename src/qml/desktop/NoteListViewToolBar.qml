@@ -25,7 +25,7 @@ ToolBar {
 
         ToolButton {
             action: noteListActions.refreshAction
-            onClicked: NoteEverywhere.notesFor(searchTextField.text)
+            onClicked: NoteEverywhere.searchNotes()
         }
 
         Item { Layout.fillWidth: true }
@@ -36,9 +36,7 @@ ToolBar {
             Layout.maximumWidth: 400 * NoteEverywhere.ratio
             Layout.fillWidth: true
 
-            onTextChanged: {
-                NoteEverywhere.notesFor(text)
-            }
+            onTextChanged: NoteEverywhere.searchQuery = text
         }
     }
 }

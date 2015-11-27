@@ -21,11 +21,9 @@ Rectangle {
 
         onCurrentIndexChanged: {
             var category = listView.model.get(currentIndex).category
-            console.log("comparing: " + NoteEverywhere.currentCategory + " " + category)
             if (NoteEverywhere.currentCategory !== category) {
                 NoteEverywhere.currentCategory = category
-                console.log("changing category for: " + category)
-                NoteEverywhere.notesFor("")
+                NoteEverywhere.searchNotes()
             }
         }
 

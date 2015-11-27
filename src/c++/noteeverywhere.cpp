@@ -38,14 +38,22 @@ void NoteEverywhere::setCurrentNote(Note *currentNote)
     }
 }
 
+void NoteEverywhere::setSearchQuery(const QString &searchQuery)
+{
+    if (m_searchQuery != searchQuery){
+        m_searchQuery = searchQuery;
+        searchNotes();
+    }
+}
+
 void NoteEverywhere::populateModel()
 {
     m_model = m_sqlInterface->populateModel();
     emit modelChanged();
 }
 
-void NoteEverywhere::notesFor(const QString &text)
+void NoteEverywhere::searchNotes()
 {
-    m_model = m_sqlInterface->notesFor(text, m_currentCategory);
+    m_model = m_sqlInterface->notesFor(m_searchQuery, m_currentCategory);
     emit modelChanged();
 }
