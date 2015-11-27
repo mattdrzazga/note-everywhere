@@ -51,11 +51,11 @@ Rectangle {
         id: contextMenu
         MenuItem {
             action: toolBar.noteListActions.renameAction
-            onTriggered: renameNoteDialog.open()
+            onTriggered: if (NoteEverywhere.currentNote) renameNoteDialog.open()
         }
         MenuItem {
             action: toolBar.noteListActions.deleteAction
-            onTriggered: deleteNoteDialog.open()
+            onTriggered: if (NoteEverywhere.currentNote) deleteNoteDialog.open()
         }
     }
 
