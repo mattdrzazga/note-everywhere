@@ -57,3 +57,15 @@ void NoteEverywhere::searchNotes()
     m_model = m_sqlInterface->notesFor(m_searchQuery, m_currentCategory);
     emit modelChanged();
 }
+
+QString NoteEverywhere::categoryAsText(int category) const
+{
+    switch (category){
+    case NoteValues::WORK: return QString("Work"); break;
+    case NoteValues::ENTERTAINMENT: return QString("Entertainment"); break;
+    case NoteValues::HOBBY: return QString("Hobby"); break;
+    case NoteValues::HOME: return QString("Home"); break;
+    case NoteValues::NONE: return QString("None"); break;
+    default: return QString();
+    }
+}

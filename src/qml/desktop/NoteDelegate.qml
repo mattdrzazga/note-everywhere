@@ -30,6 +30,7 @@ Item {
     }
 
     ColumnLayout {
+        id: columnLayout
         Layout.alignment: Qt.AlignVCenter
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
@@ -48,9 +49,15 @@ Item {
 
         //  Note last modification date and time
         Label {
-            Layout.preferredWidth: root.width - 20 * NoteEverywhere.ratio
+            Layout.preferredWidth: implicitWidth
             text: model.lastModificationDateTime.toLocaleString(Qt.locale(), Locale.ShortFormat)
             font.pixelSize: 11 * NoteEverywhere.ratio
         }
+    }
+
+    CategoryIndicator {
+        anchors.right: parent.right
+        anchors.rightMargin: 10 * NoteEverywhere.ratio
+        anchors.bottom: columnLayout.bottom
     }
 }

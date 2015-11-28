@@ -17,5 +17,6 @@
         <file>src/qml/core/CategoryMenu.qml</file>
         <file>src/qml/core/CategoryListView.qml</file>
         <file>src/qml/core/CategoryDelegate.qml</file>
+        <file>src/qml/core/CategoryIndicator.qml</file>
     </qresource>
 </RCC>
