@@ -34,6 +34,6 @@ Item {
         width: parent.width
         text: model.name
         elide: Text.ElideRight
-        font.pixelSize: 16 * NoteEverywhere.ratio
+        font.pixelSize: 14 * NoteEverywhere.ratio
     }
 }
