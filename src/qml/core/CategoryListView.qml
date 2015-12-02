@@ -2,7 +2,8 @@ import QtQuick 2.5
 import QtQuick.Controls 1.4
 import NoteEverywhere 1.0
 
-Rectangle {
+FocusScope {
+    id: focusScrope
 
     ListView {
         id: listView
@@ -16,6 +17,7 @@ Rectangle {
         delegate: CategoryDelegate {
             mouseArea.onClicked: {
                 listView.currentIndex = index
+                focusScrope.forceActiveFocus()
             }
         }
 

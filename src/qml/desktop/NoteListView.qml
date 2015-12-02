@@ -4,7 +4,10 @@ import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Dialogs 1.2
 
-Rectangle {
+FocusScope {
+    id: focusScope
+    focus: true
+
     property NoteListViewToolBar toolBar
 
     function createNewNote() {
@@ -13,6 +16,8 @@ Rectangle {
         listView.positionViewAtEnd()
         listView.currentIndex = NoteEverywhere.model.size - 1
     }
+
+    Rectangle { anchors.fill: parent }
 
     MessageDialog {
         id: deleteNoteDialog
@@ -78,6 +83,7 @@ Rectangle {
                 if (mouse.button === Qt.RightButton) {
                     contextMenu.popup()
                 }
+                focusScope.forceActiveFocus()
             }
         }
 

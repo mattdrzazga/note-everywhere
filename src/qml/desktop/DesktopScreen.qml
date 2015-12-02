@@ -18,6 +18,7 @@ Item {
         anchors.bottom: parent.bottom
         width: 150 * NoteEverywhere.ratio
         height: parent.height
+        KeyNavigation.tab: noteListView
     }
 
     NoteListView {
@@ -28,6 +29,7 @@ Item {
         anchors.left: categoryListView.right
         anchors.leftMargin: 2 * NoteEverywhere.ratio
         toolBar: noteListViewToolBar
+        KeyNavigation.backtab: categoryListView
     }
 
     NoteEditFrame {
