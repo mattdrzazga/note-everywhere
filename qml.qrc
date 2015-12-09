@@ -18,5 +18,6 @@
         <file>src/qml/core/CategoryListView.qml</file>
         <file>src/qml/core/CategoryDelegate.qml</file>
         <file>src/qml/core/CategoryIndicator.qml</file>
+        <file>src/qml/core/EmptyModelIndicator.qml</file>
     </qresource>
 </RCC>

@@ -3,5 +3,6 @@
         <file>images/linux/document-new.png</file>
         <file>images/linux/view-refresh.png</file>
         <file>images/linux/edit-clear.svg</file>
+        <file>images/linux/ic_not_interested_black_48dp.png</file>
     </qresource>
 </RCC>

@@ -30,6 +30,13 @@ Item {
         anchors.leftMargin: 2 * NoteEverywhere.ratio
         toolBar: noteListViewToolBar
         KeyNavigation.backtab: categoryListView
+
+        Loader {
+            anchors.fill: parent
+            focus: true
+            active: NoteEverywhere.model.size === 0
+            sourceComponent: EmptyModelIndicator {}
+        }
     }
 
     NoteEditFrame {

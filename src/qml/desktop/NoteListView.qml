@@ -3,6 +3,7 @@ import QtQuick.Layouts 1.2
 import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Dialogs 1.2
+import "qrc:/core/src/qml/core"
 
 FocusScope {
     id: focusScope
