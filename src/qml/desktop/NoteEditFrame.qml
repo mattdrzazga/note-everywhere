@@ -18,7 +18,8 @@ Item {
         target: NoteEverywhere
         onCurrentNoteChanged: {
             saveCurrentNote(NoteEverywhere.previousNote)
-            textFormatter.text = NoteEverywhere.currentNote? NoteEverywhere.currentNote.content : " "
+            textFormatter.text = NoteEverywhere.currentNote? NoteEverywhere.currentNote.content : ""
+            textFormatter.textChanged() //This is it.
         }
     }
 
@@ -108,6 +109,8 @@ Item {
         if (!note) return
         if (note.content !== contentTextArea.text){
             note.content = contentTextArea.text
+            //textFormatter.text = contentTextArea.text //This would be good if we didn't change textFormatter.text just after this function, in this case, it's resource waste.
+            //Instead I only decided to emit TextFormatter.textChanged signal, to reload text in contentTextArea.
             NoteEverywhere.sqlInterface.updateNoteContent(note.id, contentTextArea.text)
         }
     }
