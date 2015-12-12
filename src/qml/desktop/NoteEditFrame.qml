@@ -34,6 +34,7 @@ Item {
                 textFormatter.textColor = color
                 colorDialogLoader.active = false
             }
+            onRejected: colorDialogLoader.active = false
         }
     }
 
