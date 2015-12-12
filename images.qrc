@@ -1,8 +1,24 @@
 <RCC>
     <qresource prefix="/linux">
-        <file>images/linux/document-new.png</file>
-        <file>images/linux/view-refresh.png</file>
-        <file>images/linux/edit-clear.svg</file>
         <file>images/linux/ic_not_interested_black_48dp.png</file>
+        <file>images/linux/document-new.png</file>
+        <file>images/linux/edit-clear.png</file>
+        <file>images/linux/edit-delete.png</file>
+        <file>images/linux/edit-rename.png</file>
+        <file>images/linux/format-indent-less.png</file>
+        <file>images/linux/format-indent-more.png</file>
+        <file>images/linux/format-justify-center.png</file>
+        <file>images/linux/format-justify-fill.png</file>
+        <file>images/linux/format-justify-left.png</file>
+        <file>images/linux/format-justify-right.png</file>
+        <file>images/linux/format-list-ordered.png</file>
+        <file>images/linux/format-list-unordered.png</file>
+        <file>images/linux/format-text-bold.png</file>
+        <file>images/linux/format-text-italic.png</file>
+        <file>images/linux/format-text-strikethrough.png</file>
+        <file>images/linux/format-text-underline.png</file>
+        <file>images/linux/gtk-select-font.png</file>
+        <file>images/linux/not-interested.png</file>
+        <file>images/linux/view-refresh.png</file>
     </qresource>
 </RCC>

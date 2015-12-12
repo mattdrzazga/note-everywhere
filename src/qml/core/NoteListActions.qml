@@ -10,7 +10,6 @@ Item {
 
     Action {
         id: createNewNoteAction
-        iconName: "document-new"
         iconSource: PathResolver.iconPath("document-new");
         tooltip: "Create new note"
         text: "Create &note"
@@ -19,7 +18,6 @@ Item {
 
     Action {
         id: refreshAction
-        iconName: "view-refresh"
         iconSource: PathResolver.iconPath("view-refresh");
         tooltip: "Refresh"
         text: "&Refresh"
@@ -29,14 +27,14 @@ Item {
     Action {
         id: renameAction
         text: "Rename"
-        iconName: "document-edit"
+        iconSource: PathResolver.iconPath("edit-rename")
         shortcut: "F2"
     }
 
     Action {
         id: deleteAction
         text: "Delete"
-        iconName: "edit-delete"
+        iconSource: PathResolver.iconPath("edit-delete")
         shortcut: StandardKey.Delete
     }
 }

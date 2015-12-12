@@ -20,8 +20,7 @@ Item {
 
     Action {
         id: boldAction
-        iconName: "format-text-bold"
-        iconSource: PathResolver.iconPath("");
+        iconSource: PathResolver.iconPath("format-text-bold");
         tooltip: "Bold"
         checkable: true
         shortcut: StandardKey.Bold
@@ -29,8 +28,7 @@ Item {
 
     Action {
         id: italicAction
-        iconName: "format-text-italic"
-        iconSource: PathResolver.iconPath("");
+        iconSource: PathResolver.iconPath("format-text-italic");
         tooltip: "Italic"
         checkable: true
         shortcut: StandardKey.Italic
@@ -38,8 +36,7 @@ Item {
 
     Action {
         id: underlineAction
-        iconName: "format-text-underline"
-        iconSource: PathResolver.iconPath("");
+        iconSource: PathResolver.iconPath("format-text-underline");
         tooltip: "Underline"
         checkable: true
         shortcut: StandardKey.Underline
@@ -47,16 +44,14 @@ Item {
 
     Action {
         id: strikethroughAction
-        iconName: "format-text-strikethrough"
-        iconSource: PathResolver.iconPath("");
+        iconSource: PathResolver.iconPath("format-text-strikethrough");
         tooltip: "Strikethrough"
         checkable: true
     }
 
     Action {
         id: alignLeftAction
-        iconName: "format-justify-left"
-        iconSource: PathResolver.iconPath("");
+        iconSource: PathResolver.iconPath("format-justify-left");
         tooltip: "Align left"
         checkable: true
         shortcut: "Ctrl+l"
@@ -66,8 +61,7 @@ Item {
 
     Action {
         id: centerHorizontallyAction
-        iconName: "format-justify-center"
-        iconSource: PathResolver.iconPath("");
+        iconSource: PathResolver.iconPath("format-justify-center");
         tooltip: "Center horizontally"
         checkable: true
         shortcut: "Ctrl+e"
@@ -76,8 +70,7 @@ Item {
 
     Action {
         id: alignRightAction
-        iconName: "format-justify-right"
-        iconSource: PathResolver.iconPath("");
+        iconSource: PathResolver.iconPath("format-justify-right");
         tooltip: "Align right"
         checkable: true
         shortcut: "Ctrl+r"
@@ -86,8 +79,7 @@ Item {
 
     Action {
         id: alignJustifyAction
-        iconName: "format-justify-fill"
-        iconSource: PathResolver.iconPath("");
+        iconSource: PathResolver.iconPath("format-justify-fill");
         tooltip: "Justified"
         checkable: true
         shortcut: "Ctrl+j"
@@ -96,40 +88,35 @@ Item {
 
     Action {
         id: unorderedListButton
-        iconName: "format-list-unordered"
-        iconSource: PathResolver.iconPath("");
+        iconSource: PathResolver.iconPath("format-list-unordered");
         tooltip: "Bullets"
         checkable: true
     }
 
     Action {
         id: orderedListButton
-        iconName: "format-list-ordered"
-        iconSource: PathResolver.iconPath("");
+        iconSource: PathResolver.iconPath("format-list-ordered");
         tooltip: "Numbering"
         checkable: true
     }
 
     Action {
         id: increaseIndentButton
-        iconName: "format-indent-more"
-        iconSource: PathResolver.iconPath("");
+        iconSource: PathResolver.iconPath("format-indent-more");
         tooltip: "Increase indent"
         shortcut: "Ctrl+]"
     }
 
     Action {
         id: decreaseIndentButton
-        iconName: "format-indent-less"
-        iconSource: PathResolver.iconPath("");
+        iconSource: PathResolver.iconPath("format-indent-less");
         tooltip: "Decrease indent"
         shortcut: "Ctrl+["
     }
 
     Action {
         id: selectFontColorButton
-        iconName: "gtk-select-font"
-        iconSource: PathResolver.iconPath("")
+        iconSource: PathResolver.iconPath("gtk-select-font")
         tooltip: "Select font color"
     }
 
