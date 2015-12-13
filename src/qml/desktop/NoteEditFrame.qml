@@ -19,7 +19,7 @@ Item {
         onCurrentNoteChanged: {
             saveCurrentNote(NoteEverywhere.previousNote)
             textFormatter.text = NoteEverywhere.currentNote? NoteEverywhere.currentNote.content : ""
-            textFormatter.textChanged() //This is it.
+            textFormatter.textChanged() //This is it.   // Benchmark it and check if double-emitting signal is expensive.
         }
     }
 

@@ -26,7 +26,7 @@ TextField {
 
                 Image {
                     anchors.fill: parent
-                    source: "file:/usr/share/icons/breeze/actions/24/edit-clear.svg"
+                    source: PathResolver.iconPath("edit-clear")
                 }
             }
         }
