@@ -19,5 +19,9 @@
         <file>src/qml/core/CategoryDelegate.qml</file>
         <file>src/qml/core/CategoryIndicator.qml</file>
         <file>src/qml/core/EmptyModelIndicator.qml</file>
+        <file>src/qml/core/CToolButton.qml</file>
+    </qresource>
+    <qresource prefix="/mobile">
+        <file>src/qml/mobile/MobileScreen.qml</file>
     </qresource>
 </RCC>

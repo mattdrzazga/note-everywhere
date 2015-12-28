@@ -1,6 +1,7 @@
 import QtQuick 2.5
 import QtQuick.Controls 1.4
 import "qrc:/desktop/src/qml/desktop"
+import "qrc:/mobile/src/qml/mobile"
 
 ApplicationWindow {
     visible: true
@@ -8,10 +9,12 @@ ApplicationWindow {
     height: 480
     title: qsTr("Note Everywhere")
 
+    property Component desktopScreen: DesktopScreen {}
+    property Component mobileScreen: MobileScreen {}
 
     Loader {
         anchors.fill: parent
-        sourceComponent: DesktopScreen {}
+        sourceComponent: desktopScreen
         focus: true
     }
 }

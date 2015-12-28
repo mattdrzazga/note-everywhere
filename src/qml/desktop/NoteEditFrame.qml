@@ -40,21 +40,22 @@ Item {
 
     NoteEditFrameToolbar {
         id: noteEditFrameToolbar
-        boldButton.onClicked:           textFormatter.bold      = !textFormatter.bold
-        italicButton.onClicked:         textFormatter.italic    = !textFormatter.italic
-        underlineButton.onClicked:      textFormatter.underline = !textFormatter.underline
-        strikethroughButton.onClicked:  textFormatter.strikethrough = !textFormatter.strikethrough
 
-        alignLeftButton.onClicked:      textFormatter.alignment = Qt.AlignLeft
-        alignCenterButton.onClicked:    textFormatter.alignment = Qt.AlignHCenter
-        alignRightButton.onClicked:     textFormatter.alignment = Qt.AlignRight
-        alignJustifyButton.onClicked:   textFormatter.alignment = Qt.AlignJustify
+        boldAction.onTriggered:           textFormatter.bold      = !textFormatter.bold
+        italicAction.onTriggered:         textFormatter.italic    = !textFormatter.italic
+        underlineAction.onTriggered:      textFormatter.underline = !textFormatter.underline
+        strikethroughAction.onTriggered:  textFormatter.strikethrough = !textFormatter.strikethrough
 
-        unorderedListButton.onClicked:  textFormatter.setUnorderedListFormat()
-        orderedListButton.onClicked:    textFormatter.setOrderedListFormat()
-        increaseIndentButton.onClicked: textFormatter.increaseIndent()
-        decreaseIndentButton.onClicked: textFormatter.decreaseIndent()
-        selectFontColorButton.onClicked: colorDialogLoader.active = true
+        alignLeftAction.onTriggered:      textFormatter.alignment = Qt.AlignLeft
+        alignCenterAction.onTriggered:    textFormatter.alignment = Qt.AlignHCenter
+        alignRightAction.onTriggered:     textFormatter.alignment = Qt.AlignRight
+        alignJustifyAction.onTriggered:   textFormatter.alignment = Qt.AlignJustify
+
+        unorderedListAction.onTriggered:  textFormatter.setUnorderedListFormat()
+        orderedListAction.onTriggered:    textFormatter.setOrderedListFormat()
+        increaseIndentAction.onTriggered: textFormatter.increaseIndent()
+        decreaseIndentAction.onTriggered: textFormatter.decreaseIndent()
+        selectFontColorAction.onTriggered: colorDialogLoader.active = true
     }
 
     TextArea {
@@ -76,10 +77,11 @@ Item {
         cursorPosition: contentTextArea.cursorPosition
         selectionStart: contentTextArea.selectionStart
         selectionEnd: contentTextArea.selectionEnd
-        onBoldChanged: noteEditFrameToolbar.boldButton.checked = bold
-        onItalicChanged: noteEditFrameToolbar.italicButton.checked = italic
-        onUnderlineChanged: noteEditFrameToolbar.underlineButton.checked = underline
-        onStrikethroughChanged: noteEditFrameToolbar.strikethroughButton.checked = strikethrough
+
+        onBoldChanged:  noteEditFrameToolbar.boldAction.checked = bold
+        onItalicChanged: noteEditFrameToolbar.italicAction.checked = italic
+        onUnderlineChanged: noteEditFrameToolbar.underlineAction.checked = underline
+        onStrikethroughChanged: noteEditFrameToolbar.strikethroughAction.checked = strikethrough
         onTextColorChanged: noteEditFrameToolbar.fontColorIndicatorRectangle.color = textColor
 
         onAlignmentChanged: {
