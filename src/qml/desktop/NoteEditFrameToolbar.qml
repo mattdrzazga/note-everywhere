@@ -30,6 +30,7 @@ ToolBar {
     }
 
     RowLayout {
+        id: rowLayout
         anchors.fill: parent
 
         ToolButton {
@@ -78,27 +79,27 @@ ToolBar {
 
         ToolButton {
             id: unorderedListButton
-            action: textEditActions.unorderedListButton
+            action: textEditActions.unorderedListAction
         }
 
         ToolButton {
             id: orderedListButton
-            action: textEditActions.orderedListButton
+            action: textEditActions.orderedListAction
         }
 
         ToolButton {
             id: increaseIndentButton
-            action: textEditActions.increaseIndentButton
+            action: textEditActions.increaseIndentAction
         }
 
         ToolButton {
             id: decreaseIndentButton
-            action: textEditActions.decreaseIndentButton
+            action: textEditActions.decreaseIndentAction
         }
 
         ToolButton {
             id: selectFontColorButton
-            action: textEditActions.selectFontColorButton
+            action: textEditActions.selectFontColorAction
 
             Rectangle {
                 id: fontColorIndicatorRectangle

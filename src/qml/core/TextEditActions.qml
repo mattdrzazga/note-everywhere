@@ -12,11 +12,11 @@ Item {
     property alias alignRightAction: alignRightAction
     property alias alignJustifyAction: alignJustifyAction
 
-    property alias unorderedListButton: unorderedListButton
-    property alias orderedListButton: orderedListButton
-    property alias decreaseIndentButton: decreaseIndentButton
-    property alias increaseIndentButton: increaseIndentButton
-    property alias selectFontColorButton: selectFontColorButton
+    property alias unorderedListAction: unorderedListAction
+    property alias orderedListAction: orderedListAction
+    property alias decreaseIndentAction: decreaseIndentAction
+    property alias increaseIndentAction: increaseIndentAction
+    property alias selectFontColorAction: selectFontColorAction
 
     Action {
         id: boldAction
@@ -87,35 +87,35 @@ Item {
     }
 
     Action {
-        id: unorderedListButton
+        id: unorderedListAction
         iconSource: PathResolver.iconPath("format-list-unordered");
         tooltip: "Bullets"
         checkable: true
     }
 
     Action {
-        id: orderedListButton
+        id: orderedListAction
         iconSource: PathResolver.iconPath("format-list-ordered");
         tooltip: "Numbering"
         checkable: true
     }
 
     Action {
-        id: increaseIndentButton
+        id: increaseIndentAction
         iconSource: PathResolver.iconPath("format-indent-more");
         tooltip: "Increase indent"
         shortcut: "Ctrl+]"
     }
 
     Action {
-        id: decreaseIndentButton
+        id: decreaseIndentAction
         iconSource: PathResolver.iconPath("format-indent-less");
         tooltip: "Decrease indent"
         shortcut: "Ctrl+["
     }
 
     Action {
-        id: selectFontColorButton
+        id: selectFontColorAction
         iconSource: PathResolver.iconPath("gtk-select-font")
         tooltip: "Select font color"
     }
