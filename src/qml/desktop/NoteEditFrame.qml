@@ -100,6 +100,17 @@ Item {
                 noteEditFrameToolbar.alignJustifyAction.checked = true
             }
         }
+
+        /*
+            From Qt docs:
+            QTextListFormat::ListDisc       -1	a filled circle
+            QTextListFormat::ListDecimal	-4	decimal values in ascending order
+            QTextListFormat::ListUpperRoman	-8	upper case roman numerals (supports up to 4999 items only)
+        */
+        onListFormatChanged: {
+            noteEditFrameToolbar.orderedListAction.checked = (listFormat <= -4 && listFormat >= -8)? true : false
+            noteEditFrameToolbar.unorderedListAction.checked = (listFormat <= -1 && listFormat >= -3)? true : false
+        }
     }
 
     Timer {

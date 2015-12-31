@@ -105,7 +105,6 @@ QTextListFormat::Style TextFormatter::listFormat() const
 
     else
         return QTextListFormat::ListStyleUndefined;
-
 }
 
 void TextFormatter::reset()
@@ -198,7 +197,7 @@ void TextFormatter::setUnorderedListFormat()
         listFormatValue = QTextListFormat::ListDisc;
 
     setTextStyle(listFormatValue);
-    listFormatChanged();
+    emit listFormatChanged();
 }
 
 void TextFormatter::setOrderedListFormat()
@@ -212,7 +211,7 @@ void TextFormatter::setOrderedListFormat()
         listFormatValue = QTextListFormat::ListStyleUndefined;
 
     setTextStyle(listFormatValue);
-    listFormatChanged();
+    emit listFormatChanged();
 }
 
 void TextFormatter::increaseIndent()

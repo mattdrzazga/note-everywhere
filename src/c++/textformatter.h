@@ -24,6 +24,7 @@ class TextFormatter : public QObject
     Q_PROPERTY(QColor textColor READ textColor WRITE setTextColor NOTIFY textColorChanged)
     Q_PROPERTY(int fontSize READ fontSize WRITE setFontSize NOTIFY fontSizeChanged)
     Q_PROPERTY(QString fontFamily READ fontFamily WRITE setFontFamily NOTIFY fontFamilyChanged)
+    Q_PROPERTY(int listFormat READ listFormat NOTIFY listFormatChanged)
 
 public:
     explicit TextFormatter(QObject *parent = 0);
