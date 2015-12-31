@@ -5,9 +5,10 @@ import NoteEverywhere 1.0
 Loader {
     active: NoteEverywhere.currentCategory === Ne.NONE
     sourceComponent: Rectangle {
-        color: "lightgrey"
+        color: NoteEverywhere.colors.categoryIndicator
         width: 70 * NoteEverywhere.ratio
         height: categoryLabel.implicitHeight
+
         Label {
             id: categoryLabel
             text: NoteEverywhere.categoryAsText(category)
