@@ -13,6 +13,13 @@ Item {
         id: mouseArea
         anchors.fill: parent
         hoverEnabled: true
+        cursorShape: dropArea.containsDrag? Qt.CrossCursor : Qt.ArrowCursor
+    }
+
+    DropArea {
+        id: dropArea
+        anchors.fill: parent
+        onDropped: NoteEverywhere.changeNoteCategory(drag.source, model.category)
     }
 
     Rectangle {

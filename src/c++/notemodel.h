@@ -37,6 +37,7 @@ public:
     Q_INVOKABLE void setContentAt(int index, const QString &content);
     Q_INVOKABLE void setCategoryAt(int index, int category);
     Q_INVOKABLE void setLastModificationDateTimeAt(int index, const QDateTime &dateTime);
+    Q_INVOKABLE inline int indexOf(Note *note) const { return m_notes.indexOf(note); }
 
 signals:
     void sizeChanged();

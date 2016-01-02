@@ -70,3 +70,21 @@ QString NoteEverywhere::categoryAsText(int category) const
     default: return QString();
     }
 }
+
+void NoteEverywhere::changeNoteCategory(Note *note, int category)
+{
+    if (note->category() == category) {
+        return;
+    }
+
+    if (m_previousNote == note) {
+        m_previousNote = NULL;
+    }
+
+    if (m_currentNote == note) {
+        m_currentNote = NULL;
+    }
+
+    m_sqlInterface->updateNoteCategory(note->id(), category);
+    m_model->removeNote(m_model->indexOf(note));
+}

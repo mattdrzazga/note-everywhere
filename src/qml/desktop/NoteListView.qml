@@ -79,6 +79,8 @@ FocusScope {
         clip: true
 
         delegate: NoteDelegate {
+            dragRootItem: focusScope
+
             mouseArea.onClicked: {
                 listView.currentIndex = model.index
                 if (mouse.button === Qt.RightButton) {
@@ -86,10 +88,6 @@ FocusScope {
                 }
                 focusScope.forceActiveFocus()
             }
-        }
-
-        highlight: Rectangle {
-            color: NoteEverywhere.colors.currentItem
         }
 
         onCurrentIndexChanged: {

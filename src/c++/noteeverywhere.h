@@ -36,6 +36,7 @@ public:
     Q_INVOKABLE void populateModel();
     Q_INVOKABLE void searchNotes();
     Q_INVOKABLE QString categoryAsText(int category) const;
+    Q_INVOKABLE void changeNoteCategory(Note *note, int category);
 
 signals:
     void currentCategoryChanged(NoteValues::Category);
