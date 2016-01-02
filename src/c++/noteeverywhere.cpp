@@ -77,14 +77,24 @@ void NoteEverywhere::changeNoteCategory(Note *note, int category)
         return;
     }
 
-    if (m_previousNote == note) {
-        m_previousNote = NULL;
-    }
+    /*
+     * If 'm_currentCategory' has "NoteValues::NONE" value 'note' will not be deleted, because no matter what category it is assigned to, it will still be visible in 'NONE' category.
+     * 'note' is deleted from the model only if category is different.
+     * Deleting notes has consequences, if deleted note was assigned to 'm_currentNote' or 'm_previousNote' those fields should be updated.
+     * Both model and database are updated not matter what category is the current one.
+     *
+     * */
+    if (m_currentCategory != NoteValues::NONE) {
+        if (m_previousNote == note) {
+            m_previousNote = NULL;
+        }
 
-    if (m_currentNote == note) {
-        m_currentNote = NULL;
-    }
+        if (m_currentNote == note) {
+            m_currentNote = NULL;
+        }
 
+        m_model->removeNote(m_model->indexOf(note));
+    }
+    m_model->setCategoryAt(m_model->indexOf(note), category);
     m_sqlInterface->updateNoteCategory(note->id(), category);
-    m_model->removeNote(m_model->indexOf(note));
 }
