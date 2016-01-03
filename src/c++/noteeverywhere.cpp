@@ -84,6 +84,8 @@ void NoteEverywhere::changeNoteCategory(Note *note, int category)
      * Both model and database are updated not matter what category is the current one.
      *
      * */
+    int id = note->id();
+
     if (m_currentCategory != NoteValues::NONE) {
         if (m_previousNote == note) {
             m_previousNote = NULL;
@@ -95,6 +97,8 @@ void NoteEverywhere::changeNoteCategory(Note *note, int category)
 
         m_model->removeNote(m_model->indexOf(note));
     }
-    m_model->setCategoryAt(m_model->indexOf(note), category);
-    m_sqlInterface->updateNoteCategory(note->id(), category);
+    else {
+        m_model->setCategoryAt(m_model->indexOf(note), category);
+    }
+    m_sqlInterface->updateNoteCategory(id, category);
 }
