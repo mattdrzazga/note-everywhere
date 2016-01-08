@@ -5,9 +5,10 @@ import QtQuick.Layouts 1.2
 Item {
     id: root
     width: parent.width
-    height: 50 * NoteEverywhere.ratio
+    height: NoteEverywhere.ratio * NoteEverywhere.isMobile? 120 : 50
 
     property alias mouseArea: mouseArea
+    property int pixelSize: NoteEverywhere.isMobile? 28 : 14
 
     MouseArea {
         id: mouseArea
@@ -36,11 +37,11 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
         anchors.right: parent.right
-        anchors.leftMargin: 10
-        anchors.rightMargin: 10
+        anchors.leftMargin: 10 * NoteEverywhere.ratio
+        anchors.rightMargin: 10 * NoteEverywhere.ratio
         width: parent.width
         text: model.name
         elide: Text.ElideRight
-        font.pixelSize: 14 * NoteEverywhere.ratio
+        font.pixelSize: root.pixelSize * NoteEverywhere.ratio
     }
 }
