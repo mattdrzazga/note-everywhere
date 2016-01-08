@@ -7,7 +7,7 @@ import "qrc:/core/src/qml/core"
 Item {
     id: root
     width: parent.width
-    height: 50 * NoteEverywhere.ratio
+    height: NoteEverywhere.ratio * NoteEverywhere.isMobile? 120 : 50
 
     property alias mouseArea: mouseArea
     property Item dragRootItem: undefined
@@ -66,7 +66,7 @@ Item {
                 id: noteLabel
                 Layout.preferredWidth: root.width - 20 * NoteEverywhere.ratio
                 text: model.name
-                font.pixelSize: 13 * NoteEverywhere.ratio
+                font.pixelSize: NoteEverywhere.isMobile? 26 : 12
                 elide: Text.ElideRight
             }
 
@@ -74,7 +74,7 @@ Item {
             Label {
                 Layout.preferredWidth: implicitWidth
                 text: model.lastModificationDateTime.toLocaleString(Qt.locale(), Locale.ShortFormat)
-                font.pixelSize: 11 * NoteEverywhere.ratio
+                font.pixelSize: NoteEverywhere.isMobile? 22 : 11
             }
         }
 
