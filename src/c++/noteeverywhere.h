@@ -17,6 +17,7 @@ class NoteEverywhere : public QObject
     Q_PROPERTY(Note* previousNote READ previousNote NOTIFY previousNoteChanged)
     Q_PROPERTY(QObject* colors READ colors CONSTANT)
     Q_PROPERTY(QString searchQuery WRITE setSearchQuery)
+    Q_PROPERTY(bool isMobile READ isMobile CONSTANT)
 
 public:
     explicit NoteEverywhere(QObject *parent = 0);
