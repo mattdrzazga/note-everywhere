@@ -3,7 +3,9 @@ import QtQuick.Controls 1.4
 import NoteEverywhere 1.0
 
 FocusScope {
-    id: focusScrope
+    id: focusScope
+
+    signal categoryClicked()
 
     ListView {
         id: listView
@@ -17,7 +19,8 @@ FocusScope {
         delegate: CategoryDelegate {
             mouseArea.onClicked: {
                 listView.currentIndex = index
-                focusScrope.forceActiveFocus()
+                focusScope.forceActiveFocus()
+                focusScope.categoryClicked()
             }
         }
 
