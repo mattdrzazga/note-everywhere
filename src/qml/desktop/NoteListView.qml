@@ -10,6 +10,7 @@ FocusScope {
     focus: true
 
     property NoteListViewToolBar toolBar
+    signal noteClicked()
 
     function createNewNote() {
         var rowId = NoteEverywhere.sqlInterface.addNote("New Note", "", NoteEverywhere.currentCategory)
@@ -87,6 +88,7 @@ FocusScope {
                     contextMenu.popup()
                 }
                 focusScope.forceActiveFocus()
+                focusScope.noteClicked()
             }
         }
 
@@ -114,7 +116,5 @@ FocusScope {
                 toolbar.searchTextField.forceActiveFocus()
             }
         }
-
-        Component.onCompleted: NoteEverywhere.populateModel()
     }
 }
