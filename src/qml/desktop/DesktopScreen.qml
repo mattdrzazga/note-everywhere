@@ -37,6 +37,8 @@ Item {
             active: NoteEverywhere.model.size === 0
             sourceComponent: EmptyModelIndicator {}
         }
+
+        Component.onCompleted: NoteEverywhere.populateModel()
     }
 
     NoteEditFrame {
