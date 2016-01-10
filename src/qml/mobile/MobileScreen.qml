@@ -9,19 +9,22 @@ Item {
     id: root
 
     signal noteClicked()
+    signal popTextEditFrame()
 
     Component.onCompleted: NoteEverywhere.populateModel()
 
-
     property Component categoryListView: CategoryListView {
-        onCategoryClicked: listView.positionViewAtEnd()
+        onCategoryClicked: {
+            root.popTextEditFrame()
+            listView.positionViewAtEnd()
+        }
     }
 
     property Component noteListView: Item {
         NoteListViewToolBar {
             id: noteListViewToolBar
             width: parent.width
-            height: 45 * NoteEverywhere.ratio
+            height: 90 * NoteEverywhere.ratio
 
             style: ToolBarStyle {
                 panel: Rectangle {
@@ -35,7 +38,7 @@ Item {
                         width: parent.width
                     }
                     Rectangle {
-                        z: 2 // so flickable doesn't draw on top
+                        z: 2
                         height: 1
                         width: parent.width
                         color: Qt.darker(parent.color, 1.6)
@@ -54,6 +57,33 @@ Item {
                 }
             }
 
+            searchTextField.style: TextFieldStyle {
+                textColor: "black"
+                padding.right: control.text !==""? (44 + 10) * NoteEverywhere.ratio : 5 * NoteEverywhere.ratio
+                background: Rectangle {
+                    radius: 3 * NoteEverywhere.ratio
+                    implicitWidth: 144 * NoteEverywhere.ratio
+                    implicitHeight: 50 * NoteEverywhere.ratio
+                    border.color: control.focus === true? "#4477bb" : "darkgrey"
+                    border.width: 1
+
+
+                    MouseArea {
+                        opacity: control.text !== ""? 1 : 0
+                        width: 44 * NoteEverywhere.ratio
+                        height: 44 * NoteEverywhere.ratio
+                        anchors.right: parent.right
+                        anchors.rightMargin: 5 * NoteEverywhere.ratio
+                        anchors.verticalCenter: parent.verticalCenter
+                        onClicked: control.text = ""
+
+                        Image {
+                            anchors.fill: parent
+                            source: PathResolver.iconPath("edit-clear")
+                        }
+                    }
+                }
+            }
             createNewNoteButton.onClicked: noteListViewId.createNewNote()
         }
 
@@ -65,6 +95,15 @@ Item {
             anchors.top: noteListViewToolBar.bottom
             toolBar: noteListViewToolBar
             onNoteClicked: item.noteClicked()
+            focus: false
+
+
+            Loader {
+                anchors.fill: parent
+                focus: true
+                active: NoteEverywhere.model.size === 0
+                sourceComponent: EmptyModelIndicator {}
+            }
         }
     }
 
@@ -87,6 +126,12 @@ Item {
         Connections {
             target: root
             onNoteClicked: rootStackView.push(noteEditFrame)
+            onPopTextEditFrame: {
+                if (rootStackView.depth > 1) {
+                    rootStackView.pop(noteEditFrame)
+                    rootStackView.completeTransition()
+                }
+            }
         }
     }
 
@@ -98,6 +143,7 @@ Item {
         orientation: ListView.Horizontal
         currentIndex: 0
         snapMode: ListView.SnapOneItem
+        boundsBehavior: Flickable.StopAtBounds
         highlightMoveDuration: 100
         delegate: Loader {
             width: root.width
