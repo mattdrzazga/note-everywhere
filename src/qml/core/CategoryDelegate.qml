@@ -5,10 +5,10 @@ import QtQuick.Layouts 1.2
 Item {
     id: root
     width: parent.width
-    height: NoteEverywhere.ratio * NoteEverywhere.isMobile? 120 : 50
+    height: NoteEverywhere.ratio * 50
 
     property alias mouseArea: mouseArea
-    property int pixelSize: NoteEverywhere.isMobile? 28 : 14
+    property int pixelSize: 14
 
     MouseArea {
         id: mouseArea
