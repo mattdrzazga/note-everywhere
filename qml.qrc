@@ -23,5 +23,7 @@
     </qresource>
     <qresource prefix="/mobile">
         <file>src/qml/mobile/MobileScreen.qml</file>
+        <file>src/qml/mobile/CategoryListView.qml</file>
+        <file>src/qml/mobile/CategoryDelegate.qml</file>
     </qresource>
 </RCC>
