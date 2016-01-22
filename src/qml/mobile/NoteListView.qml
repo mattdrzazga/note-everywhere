@@ -10,6 +10,7 @@ import NoteEverywhere 1.0
 
 Item {
     // Themed ToolBar
+
     ToolBar {
         id: toolBar
         z: 2
@@ -27,6 +28,10 @@ Item {
             }
 
             Item { Layout.fillWidth: true }
+
+            ToolButton {
+                iconSource: PathResolver.iconFromAndroidAssets("ic_search_black_48dp.png")
+            }
         }
 
         style: ToolBarStyle {
@@ -123,6 +128,7 @@ Item {
         model: NoteEverywhere.model
         Component.onCompleted: NoteEverywhere.populateModel()
         delegate: NoteDelegate {
+            mouseArea.onPressed: listView.currentIndex = model.index
             mouseArea.onPressAndHold: noteMenu.popup()
             mouseArea.onClicked: listView.currentIndex = model.index
 
