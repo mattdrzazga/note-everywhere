@@ -73,6 +73,7 @@ QString NoteEverywhere::categoryAsText(int category) const
 
 void NoteEverywhere::changeNoteCategory(Note *note, int category)
 {
+    qDebug() << note;
     if (note->category() == category) {
         return;
     }
