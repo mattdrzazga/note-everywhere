@@ -5,7 +5,7 @@ import QtQuick.Layouts 1.2
 Rectangle {
     id: root
     width: parent.width
-    height: NoteEverywhere.ratio * 80
+    height: NoteEverywhere.ratio * 100
     clip: true
 
     property alias mouseArea: mouseArea
@@ -67,11 +67,12 @@ Rectangle {
 
         Image {
             anchors.verticalCenter: parent.verticalCenter
-            Layout.preferredWidth: 30 * NoteEverywhere.ratio
-            Layout.preferredHeight: 30 * NoteEverywhere.ratio
-            source: "file:/usr/share/icons/breeze/actions/22/bookmark-new.svg"
-            sourceSize.width: 30 * NoteEverywhere.ratio
-            sourceSize.height: 30 * NoteEverywhere.ratio
+            Layout.preferredWidth: 64 * NoteEverywhere.ratio
+            Layout.preferredHeight: 64 * NoteEverywhere.ratio
+            // Todo get better icon for category, as it's temporary for now.
+            source: "qrc:/linux/images/linux/document-new.png"
+            sourceSize.width: 64 * NoteEverywhere.ratio
+            sourceSize.height: 64 * NoteEverywhere.ratio
         }
 
         Item { Layout.preferredWidth: 10 }
@@ -81,7 +82,7 @@ Rectangle {
             Layout.fillWidth: true
             text: model.name
             elide: Text.ElideRight
-            font.pixelSize: 18 * NoteEverywhere.ratio
+            font.pointSize: 16
         }
     }
 }
