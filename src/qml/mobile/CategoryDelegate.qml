@@ -70,7 +70,7 @@ Rectangle {
             Layout.preferredWidth: 64 * NoteEverywhere.ratio
             Layout.preferredHeight: 64 * NoteEverywhere.ratio
             // Todo get better icon for category, as it's temporary for now.
-            source: "qrc:/linux/images/linux/document-new.png"
+            source: PathResolver.iconFromAndroidAssets("ic_rowing_black_48dp.png")
             sourceSize.width: 64 * NoteEverywhere.ratio
             sourceSize.height: 64 * NoteEverywhere.ratio
         }
