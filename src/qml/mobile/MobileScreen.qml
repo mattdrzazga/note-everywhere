@@ -5,4 +5,17 @@ import QtQuick.Controls.Styles 1.4
 
 Item {
     id: root
+
+
+
+/*    CategoryListView {
+        anchors.fill: parent
+
+    }
+    */
+
+    NoteListView {
+        anchors.fill: parent
+    }
+
 }

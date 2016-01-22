@@ -14,7 +14,7 @@ ApplicationWindow {
 
     Loader {
         anchors.fill: parent
-        sourceComponent: NoteEverywhere.isMobile? mobileScreen : desktopScreen
+        sourceComponent: NoteEverywhere.isMobile? mobileScreen : mobileScreen
         focus: true
     }
 }
