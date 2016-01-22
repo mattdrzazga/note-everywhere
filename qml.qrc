@@ -25,5 +25,6 @@
         <file>src/qml/mobile/MobileScreen.qml</file>
         <file>src/qml/mobile/CategoryListView.qml</file>
         <file>src/qml/mobile/CategoryDelegate.qml</file>
+        <file>src/qml/mobile/NoteListView.qml</file>
     </qresource>
 </RCC>
