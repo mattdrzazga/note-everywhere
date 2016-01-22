@@ -1,12 +1,36 @@
 import QtQuick 2.5
 import QtQuick.Controls 1.4
+import QtQuick.Layouts 1.2
+
 import NoteEverywhere 1.0
 
 Rectangle {
 
+    ToolBar {
+        id: toolBar
+
+        RowLayout {
+            anchors.fill: parent
+
+            Item { Layout.fillWidth: true }
+
+            ToolButton {
+                menu: Menu {
+                    MenuItem {
+                        text: "Quit"
+                        onTriggered: Qt.quit()
+                    }
+                }
+            }
+        }
+    }
+
     ListView {
         id: listView
-        anchors.fill: parent
+        anchors.top: toolBar.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
         boundsBehavior: Flickable.StopAtBounds
         delegate: CategoryDelegate{
             color: ListView.isCurrentItem? NoteEverywhere.colors.currentItem : "white"
