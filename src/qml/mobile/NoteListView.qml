@@ -75,6 +75,10 @@ Item {
                 editNoteNameField.forceActiveFocus()
                 editNoteNameField.selectAll()
             }
+            else {
+                Qt.inputMethod.hide()
+                editNoteNameField.deselect()
+            }
         }
 
         onAccepted: {
@@ -83,7 +87,7 @@ Item {
             NoteEverywhere.model.setNameAt(listView.currentIndex, editNoteNameField.text)
         }
 
-        TextField { id: editNoteNameField }
+        TextField { id: editNoteNameField; width: parent.width }
     }
 
 
