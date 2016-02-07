@@ -69,8 +69,7 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
             Layout.preferredWidth: 64 * NoteEverywhere.ratio
             Layout.preferredHeight: 64 * NoteEverywhere.ratio
-            // Todo get better icon for category, as it's temporary for now.
-            source: PathResolver.iconFromAndroidAssets("ic_rowing_black_48dp.png")
+            source: root.ListView.isCurrentItem? PathResolver.iconFromAndroidAssets("ic_label_black_48dp.png") : PathResolver.iconFromAndroidAssets("ic_label_grey_48dp.png")
             sourceSize.width: 64 * NoteEverywhere.ratio
             sourceSize.height: 64 * NoteEverywhere.ratio
         }
