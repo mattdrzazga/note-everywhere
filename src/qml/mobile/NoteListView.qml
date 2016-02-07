@@ -68,7 +68,8 @@ Item {
     Dialog {
         id: renameNoteDialog
         title: "Rename note"
-        standardButtons: StandardButton.Ok | StandardButton.Cancel
+        standardButtons: StandardButton.Yes | StandardButton.No
+
         onVisibleChanged: {
             if (visible) {
                 editNoteNameField.text = NoteEverywhere.currentNote.name
@@ -81,7 +82,7 @@ Item {
             }
         }
 
-        onAccepted: {
+        onYes: {
             var currentNoteId = NoteEverywhere.currentNote.id
             NoteEverywhere.sqlInterface.updateNoteName(currentNoteId, editNoteNameField.text)
             NoteEverywhere.model.setNameAt(listView.currentIndex, editNoteNameField.text)
@@ -129,6 +130,7 @@ Item {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         boundsBehavior: Flickable.StopAtBounds
+        flickableDirection: Flickable.VerticalFlick
         model: NoteEverywhere.model
         Component.onCompleted: NoteEverywhere.populateModel()
         delegate: NoteDelegate {
