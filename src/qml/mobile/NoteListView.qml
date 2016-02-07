@@ -19,7 +19,7 @@ Item {
             spacing: 0
 
             ToolButton {
-                iconSource: PathResolver.iconFromAndroidAssets("ic_menu_black_48dp.png")
+                iconSource: PathResolver.iconFromAndroidAssets("ic_menu_white_48dp.png")
             }
 
             ToolButton {
@@ -30,7 +30,7 @@ Item {
             Item { Layout.fillWidth: true }
 
             ToolButton {
-                iconSource: PathResolver.iconFromAndroidAssets("ic_search_black_48dp.png")
+                iconSource: PathResolver.iconFromAndroidAssets("ic_search_white_48dp.png")
             }
         }
 
@@ -96,7 +96,7 @@ Item {
         id: noteListActions
         renameAction.iconSource: ""
         deleteAction.iconSource: ""
-        refreshAction.iconSource: PathResolver.iconFromAndroidAssets("ic_refresh_black_48dp.png")
+        refreshAction.iconSource: PathResolver.iconFromAndroidAssets("ic_refresh_white_48dp.png")
         refreshAction.text: ""
     }
 

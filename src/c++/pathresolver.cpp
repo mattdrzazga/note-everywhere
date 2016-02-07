@@ -23,6 +23,6 @@ QString PathResolver::iconPath(const QString &iconName) const
 
 
 QString PathResolver::iconFromAndroidAssets(const QString &iconName) const {
-    QString drawable = "drawable-hdpi/";    //For now
+    QString drawable = "drawable-mdpi/";    //For now
     return QString("assets:/" + drawable + iconName);
 }
