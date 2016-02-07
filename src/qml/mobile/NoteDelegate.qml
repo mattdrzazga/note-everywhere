@@ -2,6 +2,7 @@ import QtQuick 2.5
 import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.2
 import QtGraphicalEffects 1.0
+import "qrc:/core/src/qml/core"
 
 Item {
     id: root
@@ -72,36 +73,49 @@ Item {
         }
 
 
-        RowLayout {
+        ColumnLayout {
             anchors.fill: parent
             anchors.margins: 10 * NoteEverywhere.ratio
 
-            ColumnLayout {
-                Layout.fillHeight: true
-                Layout.maximumWidth: parent.width * 0.8
-
-                Label {
-                    font.pointSize: 20
-                    Layout.fillWidth: true
-                    elide: Text.ElideRight
-                    text: model.name
-                }
-
-                Label {
-                    font.pointSize: 18
-                    Layout.fillWidth: true
-                    elide: Text.ElideRight
-//                    text: new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString()
-                    text: model.lastModificationDateTime.toLocaleString(Qt.locale(), Locale.ShortFormat)
-
-                }
+            Label {
+                font.pointSize: 20
+                Layout.fillWidth: true
+                elide: Text.ElideRight
+                text: model.name
             }
+
+            Label {
+                font.pointSize: 18
+                Layout.fillWidth: true
+                elide: Text.ElideRight
+                text: model.lastModificationDateTime.toLocaleString(Qt.locale(), Locale.ShortFormat)
+            }
+        }
+
+        CategoryIndicator {
+            anchors.right: parent.right
+            anchors.rightMargin: 10 * NoteEverywhere.ratio
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 10 * NoteEverywhere.ratio
+            pixelSize: 30 * NoteEverywhere.ratio
+            preferredWidth: 240 * NoteEverywhere.ratio
         }
     }
 
     DropShadow {
         anchors.fill: rootRect
         horizontalOffset: 2
+        verticalOffset: 3
+        radius: 8.0
+        samples: 16
+        cached: true
+        color: "lightgrey"
+        source: rootRect
+    }
+
+    DropShadow {
+        anchors.fill: rootRect
+        horizontalOffset: -2
         verticalOffset: 3
         radius: 8.0
         samples: 16
