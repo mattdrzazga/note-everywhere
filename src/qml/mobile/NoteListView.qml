@@ -10,6 +10,7 @@ import NoteEverywhere 1.0
 
 Item {
     // Themed ToolBar
+    property alias menuButton: menuButton
 
     ToolBar {
         id: toolBar
@@ -19,6 +20,7 @@ Item {
             spacing: 0
 
             ToolButton {
+                id: menuButton
                 iconSource: PathResolver.iconFromAndroidAssets("ic_menu_white_48dp.png")
             }
 
