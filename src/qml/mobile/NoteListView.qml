@@ -60,6 +60,10 @@ Item {
                 Layout.preferredHeight: rowLayout.height
                 Layout.fillWidth: true
                 visible: toolBar.expandedSearchBar
+                placeholderText: "Search notes"
+
+                onTextChanged: NoteEverywhere.searchQuery = text
+
                 onFocusChanged: {
                     if (!focus){
                         Qt.inputMethod.hide()
@@ -71,8 +75,6 @@ Item {
                     Qt.inputMethod.hide()
                     searchTextField.parent.forceActiveFocus()
                 }
-
-                placeholderText: "Search notes"
             }
 
             ToolButton {
