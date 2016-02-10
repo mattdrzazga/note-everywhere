@@ -15,30 +15,75 @@ Item {
     ToolBar {
         id: toolBar
         z: 2
+        property bool expandedSearchBar: false
+
         RowLayout {
+            id: rowLayout
             anchors.fill: parent
             spacing: 0
 
             ToolButton {
                 id: menuButton
                 iconSource: PathResolver.iconFromAndroidAssets("ic_menu_white_48dp.png")
+                visible: !toolBar.expandedSearchBar
+            }
+
+            ToolButton {
+                id: backButton
+                iconSource: PathResolver.iconFromAndroidAssets("ic_arrow_back_grey_48dp.png")
+                visible: toolBar.expandedSearchBar
+                onClicked: {
+                    toolBar.expandedSearchBar = false
+                    searchTextField.parent.forceActiveFocus()
+                }
             }
 
             ToolButton {
                 action: noteListActions.refreshAction
                 onClicked: NoteEverywhere.searchNotes()
+                visible: !toolBar.expandedSearchBar
             }
 
-            Item { Layout.fillWidth: true }
+            Item { Layout.fillWidth: true; visible: !toolBar.expandedSearchBar }
 
             ToolButton {
                 iconSource: PathResolver.iconFromAndroidAssets("ic_search_white_48dp.png")
+                visible: !toolBar.expandedSearchBar
+                onClicked: {
+                    toolBar.expandedSearchBar = true
+                    searchTextField.forceActiveFocus()
+                }
+            }
+
+            TextField {
+                id: searchTextField
+                Layout.preferredHeight: rowLayout.height
+                Layout.fillWidth: true
+                visible: toolBar.expandedSearchBar
+
+                Keys.onBackPressed: {
+                    toolBar.expandedSearchBar = false
+                    Qt.inputMethod.hide()
+                    searchTextField.parent.forceActiveFocus()
+                }
+
+                placeholderText: "Search notes"
+            }
+
+            ToolButton {
+                iconSource: PathResolver.iconFromAndroidAssets("ic_clear_grey_48dp.png")
+                visible: searchTextField.text !== "" && toolBar.expandedSearchBar
+                onClicked: {
+                    searchTextField.text = ""
+                    Qt.inputMethod.show()
+                }
             }
         }
 
+
         style: ToolBarStyle {
             panel: Rectangle {
-                color: "#4caf50"
+                color: toolBar.expandedSearchBar? "white" : "#4caf50"
 
                 DropShadow {
                     anchors.fill: parent
@@ -53,6 +98,8 @@ Item {
             }
         }
     }
+
+
 
     MessageDialog {
         id: deleteNoteDialog
