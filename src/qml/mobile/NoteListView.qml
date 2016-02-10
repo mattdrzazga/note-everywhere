@@ -60,6 +60,11 @@ Item {
                 Layout.preferredHeight: rowLayout.height
                 Layout.fillWidth: true
                 visible: toolBar.expandedSearchBar
+                onFocusChanged: {
+                    if (!focus){
+                        Qt.inputMethod.hide()
+                    }
+                }
 
                 Keys.onBackPressed: {
                     toolBar.expandedSearchBar = false
@@ -185,7 +190,7 @@ Item {
         delegate: NoteDelegate {
             mouseArea.onPressed: listView.currentIndex = model.index
             mouseArea.onPressAndHold: noteMenu.popup()
-            mouseArea.onClicked: listView.currentIndex = model.index
+            mouseArea.onClicked: { listView.currentIndex = model.index; forceActiveFocus() }
 
         }
 
