@@ -5,6 +5,23 @@ import QtQuick.Layouts 1.2
 Item {
     id: root
 
+    property Component noteListView: NoteListView {
+        menuButton.onClicked: categoryListView.show()
+        onNoteClicked: {
+            if (!stackView.busy) {
+                stackView.push(noteEditFrame)
+            }
+        }
+    }
+
+    property Component noteEditFrame: NoteEditFrame {
+        onPreviousPage: {
+            if (!stackView.busy) {
+                stackView.pop()
+            }
+        }
+    }
+
 
     CategoryListView {
         id: categoryListView
@@ -33,9 +50,18 @@ Item {
         }
     }
 
-
-    NoteListView {
+    StackView {
+        id: stackView
         anchors.fill: parent
-        menuButton.onClicked: categoryListView.show()
+        initialItem: noteListView
+        focus: true
+        Keys.onBackPressed: {
+            if (stackView.depth > 1) {
+                pop()
+            }
+            else {
+                Qt.quit()
+            }
+        }
     }
 }

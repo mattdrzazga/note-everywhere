@@ -9,8 +9,11 @@ import "qrc:/core/src/qml/core"
 import NoteEverywhere 1.0
 
 Item {
+    id: root
     // Themed ToolBar
     property alias menuButton: menuButton
+
+    signal noteClicked()
 
     ToolBar {
         id: toolBar
@@ -192,11 +195,20 @@ Item {
         delegate: NoteDelegate {
             mouseArea.onPressed: listView.currentIndex = model.index
             mouseArea.onPressAndHold: noteMenu.popup()
-            mouseArea.onClicked: { listView.currentIndex = model.index; forceActiveFocus() }
-
+            mouseArea.onClicked: {
+                listView.currentIndex = model.index
+                forceActiveFocus()
+                root.noteClicked()
+            }
         }
 
         onCurrentIndexChanged: NoteEverywhere.currentNote = NoteEverywhere.model.getNote(currentIndex)
+
+        onModelChanged: {   // TypeError 'Cannot read property 'size' of null' can be ignored, it can also be prevented by checking if model exists. For future consideration.
+            if (NoteEverywhere.model && NoteEverywhere.model.size === 0) {
+                NoteEverywhere.currentNote = null
+            }
+        }
     }
 
 

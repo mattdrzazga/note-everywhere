@@ -27,5 +27,7 @@
         <file>src/qml/mobile/CategoryDelegate.qml</file>
         <file>src/qml/mobile/NoteListView.qml</file>
         <file>src/qml/mobile/NoteDelegate.qml</file>
+        <file>src/qml/mobile/NoteEditFrame.qml</file>
+        <file>src/qml/mobile/NoteEditFrameToolBar.qml</file>
     </qresource>
 </RCC>
